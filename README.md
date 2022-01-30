@@ -31,7 +31,7 @@ https://github.com/montehunter/PSP-NetParty/wiki
 
 Install winpcap and then launch PlayClient.jar
 Again, currently there is no master server, so you must host yourself.
-
+The dll's included are for 64bit Windows. If you require 32bit then you can get them from https://github.com/montehunter/PSP-NetParty/releases/tag/VERSION_0.8
 
 ## How to build
 
