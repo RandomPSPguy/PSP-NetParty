@@ -39,4 +39,4 @@ Specify publish_directory as the directory to export the PSP NetParty jar
 
 
 ## If you would like to contact me
-phreaq.com redirects you to a discord server I am in. It is a hangout server, not related to this project in any way, but if you want me to answer you quickly then check there.
+[Phreaq.com](phreaq.com) redirects you to a discord server I am in. It is a hangout server, not related to this project in any way, but if you want me to answer you quickly then check there.
