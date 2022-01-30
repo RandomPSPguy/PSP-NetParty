@@ -43,8 +43,8 @@ import pspnetparty.lib.socket.IProtocol;
 
 public class AllInOneServer {
 	public static void main(String[] args) throws Exception {
-		System.out.printf("%s オールインワンサーバー  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
-		System.out.println("プロトコル: " + IProtocol.NUMBER);
+		System.out.printf("%s All-in-one server  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
+		System.out.println("protocol: " + IProtocol.NUMBER);
 
 		String iniFileName = "AllInOneServer.ini";
 		switch (args.length) {
@@ -52,27 +52,27 @@ public class AllInOneServer {
 			iniFileName = args[0];
 			break;
 		}
-		System.out.println("設定INIファイル名: " + iniFileName);
+		System.out.println("Setting INI file name: " + iniFileName);
 
 		IniFile ini = new IniFile(iniFileName);
 		IniSection settings = ini.getSection(IniConstants.SECTION_SETTINGS);
 
 		final int port = settings.get(IniConstants.PORT, 20000);
 		if (port < 1 || port > 65535) {
-			System.out.println("ポート番号が不正です: " + port);
+			System.out.println("The port number is invalid: " + port);
 			return;
 		}
-		System.out.println("ポート: " + port);
+		System.out.println("port: " + port);
 
 		String hostname = settings.get("HostName", "localhost");
 		if (Utility.isEmpty(hostname)) {
-			System.out.println("ホスト名が設定されていません: " + hostname);
+			System.out.println("Host name is not set: " + hostname);
 			return;
 		}
-		System.out.println("ホスト名: " + hostname);
+		System.out.println("hostname: " + hostname);
 
 		final String loginMessageFile = settings.get(IniConstants.LOGIN_MESSAGE_FILE, "");
-		System.out.println("ルームログインメッセージファイル : " + loginMessageFile);
+		System.out.println("Room login message file : " + loginMessageFile);
 
 		ILogger logger = ServerUtils.createLogger();
 
@@ -118,10 +118,10 @@ public class AllInOneServer {
 		{
 			int maxRooms = settings.get(IniConstants.MAX_ROOMS, 10);
 			if (maxRooms < 1) {
-				System.out.println("部屋数が不正です: " + maxRooms);
+				System.out.println("The number of rooms is incorrect: " + maxRooms);
 				return;
 			}
-			System.out.println("最大部屋数: " + maxRooms);
+			System.out.println("Maximum number of rooms: " + maxRooms);
 
 			RoomEngine roomEngine = new RoomEngine(tcpServer, udpServer, logger, registry);
 			roomEngine.setMaxRooms(maxRooms);
@@ -130,24 +130,24 @@ public class AllInOneServer {
 		{
 			int maxUsers = settings.get(IniConstants.MAX_USERS, 30);
 			if (maxUsers < 1) {
-				System.out.println("最大検索ユーザー数が不正です: " + maxUsers);
+				System.out.println("The maximum number of search users is invalid: " + maxUsers);
 				return;
 			}
-			System.out.println("最大検索ユーザー数: " + maxUsers);
+			System.out.println("Maximum number of search users: " + maxUsers);
 
 			int maxSearchResults = settings.get(IniConstants.MAX_SEARCH_RESULTS, 50);
 			if (maxSearchResults < 1) {
-				System.out.println("最大検索件数が不正です: " + maxSearchResults);
+				System.out.println("Maximum number of searches is invalid: " + maxSearchResults);
 				return;
 			}
-			System.out.println("最大検索件数: " + maxSearchResults);
+			System.out.println("Maximum number of searches: " + maxSearchResults);
 
 			int descriptionMaxLength = settings.get(IniConstants.DESCRIPTION_MAX_LENGTH, 100);
 			if (descriptionMaxLength < 1) {
-				System.out.println("部屋の詳細・備考の最大サイズが不正です: " + descriptionMaxLength);
+				System.out.println("Room details / remarks maximum size is incorrect: " + descriptionMaxLength);
 				return;
 			}
-			System.out.println("部屋の詳細・備考の最大文字数: " + descriptionMaxLength);
+			System.out.println("Maximum number of characters in room details / remarks: " + descriptionMaxLength);
 
 			SearchEngine searchEngine = new SearchEngine(tcpServer, logger, registry);
 			searchEngine.setMaxUsers(maxUsers);
@@ -179,7 +179,7 @@ public class AllInOneServer {
 		handlers.put("help", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("shutdown\n\tサーバーを終了させる");
+				System.out.println("shutdown\n\tshutdown the server");
 			}
 		});
 

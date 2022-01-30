@@ -54,7 +54,7 @@ public class RoomServerSelectDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("ルームサーバー選択");
+		newShell.setText("Room server selection");
 	}
 
 	@Override
@@ -69,10 +69,10 @@ public class RoomServerSelectDialog extends Dialog {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
 		TableColumn addressColumn = new TableColumn(table, SWT.LEFT);
-		addressColumn.setText("アドレス");
+		addressColumn.setText("address");
 
 		TableColumn useRateColumn = new TableColumn(table, SWT.RIGHT);
-		useRateColumn.setText("利用率");
+		useRateColumn.setText("Utilization");
 
 		viewer.setContentProvider(new ArrayContentProvider());
 		viewer.setLabelProvider(RoomServerInfo.LABEL_PROVIDER);

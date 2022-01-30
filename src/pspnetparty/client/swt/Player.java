@@ -115,7 +115,7 @@ public class Player {
 
 			switch (index) {
 			case 0:
-				return player.isSsidChased ? "追" : "";
+				return player.isSsidChased ? "chase" : "";
 			case 1:
 				return player.name;
 			case 2:

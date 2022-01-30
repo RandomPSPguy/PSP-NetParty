@@ -44,7 +44,7 @@ public class ComboHistoryManager {
 		this.maxHistory = maxHistory;
 
 		if (combo.getItemCount() > 0) {
-			combo.add("----------履歴----------");
+			combo.add("----------history----------");
 			combo.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {

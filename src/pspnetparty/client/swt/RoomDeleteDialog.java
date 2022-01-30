@@ -45,7 +45,7 @@ public class RoomDeleteDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("部屋をどうしますか？");
+		newShell.setText("What do you do with the room?");
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class RoomDeleteDialog extends Dialog {
 		container.setLayout(layout);
 
 		Button logoutOnlyButton = new Button(container, SWT.PUSH);
-		logoutOnlyButton.setText("部屋を抜ける");
+		logoutOnlyButton.setText("Exit the room");
 		logoutOnlyButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		logoutOnlyButton.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -74,10 +74,10 @@ public class RoomDeleteDialog extends Dialog {
 		});
 
 		Label logoutOnlyLabel = new Label(container, SWT.NONE);
-		logoutOnlyLabel.setText("自動的に他の人へ部屋主が委譲されます");
+		logoutOnlyLabel.setText("The room owner is automatically transferred to another person");
 
 		Button destroyRoomButton = new Button(container, SWT.PUSH);
-		destroyRoomButton.setText("部屋を解散する");
+		destroyRoomButton.setText("Dissolve the room");
 		destroyRoomButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		destroyRoomButton.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -88,10 +88,10 @@ public class RoomDeleteDialog extends Dialog {
 		});
 
 		Label destroyRoomLabel = new Label(container, SWT.NONE);
-		destroyRoomLabel.setText("部屋を削除します。全員ログアウトされます。");
+		destroyRoomLabel.setText("Delete the room. Everyone will be logged out.");
 
 		Button cancelButton = new Button(container, SWT.PUSH);
-		cancelButton.setText("キャンセルする");
+		cancelButton.setText("Cancel");
 		cancelButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		cancelButton.addListener(SWT.Selection, new Listener() {
 			@Override

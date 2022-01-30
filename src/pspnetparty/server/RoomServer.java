@@ -37,8 +37,8 @@ import pspnetparty.lib.socket.IProtocol;
 
 public class RoomServer {
 	public static void main(String[] args) throws Exception {
-		System.out.printf("%s ルームサーバー  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
-		System.out.println("プロトコル: " + IProtocol.NUMBER);
+		System.out.printf("%s Room Server  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
+		System.out.println("protocol: " + IProtocol.NUMBER);
 
 		String iniFileName = "RoomServer.ini";
 		switch (args.length) {
@@ -46,27 +46,27 @@ public class RoomServer {
 			iniFileName = args[0];
 			break;
 		}
-		System.out.println("設定INIファイル名: " + iniFileName);
+		System.out.println("Setting INI file name: " + iniFileName);
 
 		IniFile ini = new IniFile(iniFileName);
 		IniSection settings = ini.getSection(IniConstants.SECTION_SETTINGS);
 
 		final int port = settings.get(IniConstants.PORT, 30000);
 		if (port < 1 || port > 65535) {
-			System.out.println("ポート番号が不正です: " + port);
+			System.out.println("The port number is invalid: " + port);
 			return;
 		}
-		System.out.println("ポート: " + port);
+		System.out.println("port: " + port);
 
 		int maxRooms = settings.get(IniConstants.MAX_ROOMS, 10);
 		if (maxRooms < 1) {
-			System.out.println("部屋数が不正です: " + maxRooms);
+			System.out.println("The number of rooms is incorrect: " + maxRooms);
 			return;
 		}
-		System.out.println("最大部屋数: " + maxRooms);
+		System.out.println("Maximum number of rooms: " + maxRooms);
 
 		final String loginMessageFile = settings.get(IniConstants.LOGIN_MESSAGE_FILE, "");
-		System.out.println("ログインメッセージファイル : " + loginMessageFile);
+		System.out.println("Login message file : " + loginMessageFile);
 
 		ini.saveToIni();
 
@@ -86,18 +86,18 @@ public class RoomServer {
 		handlers.put("help", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("shutdown\n\tサーバーを終了させる");
-				System.out.println("list\n\t現在の部屋リストを表示");
-				System.out.println("status\n\t現在のサーバーの状態を表示");
-				System.out.println("set MaxRooms 部屋数\n\t最大部屋数を部屋数に設定");
-				System.out.println("notify メッセージ\n\t全員にメッセージを告知");
-				System.out.println("destroy 部屋主名\n\t部屋主名の部屋を解体する");
-				System.out.println("goma 部屋主名\n\t部屋主名の部屋の最大人数を増やす");
-				System.out.println("myroom list\n\tマイルームの一覧");
-				System.out.println("myroom destroy ルームアドレス\n\t指定したマイルームの登録を削除する");
-				System.out.println("portal list\n\t登録中のポータル一覧");
-				System.out.println("portal accept\n\tポータル登録の受付開始");
-				System.out.println("portal reject\n\tポータル登録の受付停止");
+				System.out.println("shutdown\n\tShut down the server");
+				System.out.println("list\n\tView current room list");
+				System.out.println("status\n\tShow current server status");
+				System.out.println("set MaxRooms number of rooms\n\tSet the maximum number of rooms to the number of rooms");
+				System.out.println("notify message\n\tAnnounce a message to everyone");
+				System.out.println("destroy Room owner name\n\tDismantle the room with the name of the room owner");
+				System.out.println("goma room owner name\n\tIncrease the maximum number of people in a room with a room owner");
+				System.out.println("myroom list\n\tList of my rooms");
+				System.out.println("myroom destroy Room address\n\tDelete the registration of the specified My Room");
+				System.out.println("portal list\n\tList of registered portals");
+				System.out.println("portal accept\n\tStart accepting portal registration");
+				System.out.println("portal reject\n\tStop accepting portal registration");
 			}
 		});
 		handlers.put("list", new ICommandHandler() {
@@ -109,10 +109,10 @@ public class RoomServer {
 		handlers.put("status", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("ポート: " + port);
-				System.out.println("部屋数: " + engine.getRoomCount() + " / " + engine.getMaxRooms());
-				System.out.println("ログインメッセージファイル : " + loginMessageFile);
-				System.out.println("ポータル登録: " + (engine.isAcceptingPortal() ? "受付中" : "停止中"));
+				System.out.println("port: " + port);
+				System.out.println("# of rooms: " + engine.getRoomCount() + " / " + engine.getMaxRooms());
+				System.out.println("Login message file : " + loginMessageFile);
+				System.out.println("Portal registration: " + (engine.isAcceptingPortal() ? "Accepting" : "Stop"));
 			}
 		});
 		handlers.put("set", new ICommandHandler() {
@@ -130,7 +130,7 @@ public class RoomServer {
 						if (max < 0)
 							return;
 						engine.setMaxRooms(max);
-						System.out.println("最大部屋数を " + max + " に設定しました");
+						System.out.println("Maximum number of rooms " + max + " set to");
 					} catch (NumberFormatException e) {
 					}
 				}
@@ -143,7 +143,7 @@ public class RoomServer {
 					return;
 
 				engine.notifyAllPlayers(message);
-				System.out.println("メッセージを告知しました : " + message);
+				System.out.println("Announced the message : " + message);
 			}
 		});
 		handlers.put("destroy", new ICommandHandler() {
@@ -153,9 +153,9 @@ public class RoomServer {
 					return;
 
 				if (engine.destroyRoom(masterName)) {
-					System.out.println("部屋を解体しました : " + masterName);
+					System.out.println("I dismantled the room : " + masterName);
 				} else {
-					System.out.println("部屋を解体できませんでした");
+					System.out.println("Could not dismantle the room");
 				}
 			}
 		});
@@ -166,7 +166,7 @@ public class RoomServer {
 					return;
 
 				engine.hirakeGoma(masterName);
-				System.out.println("部屋に入れるようになりました : " + masterName);
+				System.out.println("You can now enter the room : " + masterName);
 			}
 		});
 		handlers.put("myroom", new ICommandHandler() {
@@ -178,15 +178,15 @@ public class RoomServer {
 
 				String action = tokens[0].toLowerCase();
 				if ("list".equals(action)) {
-					System.out.println("[登録マイルームの一覧]");
+					System.out.println("[List of registered my rooms]");
 					System.out.println(engine.myRoomsToString());
 				} else if ("destroy".equals(action)) {
 					if (tokens.length == 2) {
 						String roomAddress = tokens[1];
 						if (engine.destroyMyRoom(roomAddress)) {
-							System.out.println("マイルームの登録を削除しました : " + roomAddress);
+							System.out.println("My room registration has been deleted : " + roomAddress);
 						} else {
-							System.out.println("マイルームの登録を削除できませんでした");
+							System.out.println("Could not delete my room registration");
 						}
 					}
 				}
@@ -197,16 +197,16 @@ public class RoomServer {
 			public void process(String argument) {
 				String action = argument.trim();
 				if ("list".equalsIgnoreCase(action)) {
-					System.out.println("[登録中のポータルサーバーの一覧]");
+					System.out.println("[List of registered portal servers]");
 					for (InetSocketAddress address : engine.getPortalAddresses()) {
 						System.out.println(address.getAddress().getHostAddress() + ":" + address.getPort());
 					}
 				} else if ("accept".equalsIgnoreCase(action)) {
 					engine.setAcceptingPortal(true);
-					System.out.println("ポータル接続の受付を開始しました");
+					System.out.println("We have started accepting portal connections");
 				} else if ("reject".equalsIgnoreCase(action)) {
 					engine.setAcceptingPortal(false);
-					System.out.println("ポータル接続の受付を停止しました");
+					System.out.println("We have stopped accepting portal connections");
 				}
 			}
 		});

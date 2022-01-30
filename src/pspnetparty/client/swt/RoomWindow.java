@@ -181,7 +181,7 @@ public class RoomWindow implements IAppWindow {
 		this.application = application;
 
 		shell = new Shell(SwtUtils.DISPLAY);
-		shell.setText("ルーム - " + AppConstants.APP_NAME);
+		shell.setText("Room - " + AppConstants.APP_NAME);
 
 		chatTextPresets = new IniChatTextPresets(application.getIniSection(IniChatTextPresets.SECTION_NAME));
 
@@ -381,7 +381,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formModeSelectionLabel);
 
 			formModeSelectionCombo = new Combo(formModeContainer, SWT.READ_ONLY);
-			formModeSelectionCombo.setItems(new String[] { "オート", "マニュアル", "マイルーム" });
+			formModeSelectionCombo.setItems(new String[] { "Auto", "Manual", "My Room" });
 			formModeSelectionCombo.select(0);
 			formModeSelectionCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 			application.initControl(formModeSelectionCombo);
@@ -401,7 +401,7 @@ public class RoomWindow implements IAppWindow {
 			formAutoModeContainer.setLayout(gridLayout);
 
 			Label formAutoModeServerAddressLabel = new Label(formAutoModeContainer, SWT.NONE);
-			formAutoModeServerAddressLabel.setText("サーバー");
+			formAutoModeServerAddressLabel.setText("server");
 			application.initControl(formAutoModeServerAddressLabel);
 
 			formAutoModeServerAddress = new Text(formAutoModeContainer, SWT.BORDER | SWT.SINGLE | SWT.READ_ONLY);
@@ -421,7 +421,7 @@ public class RoomWindow implements IAppWindow {
 			formManualModeContainer.setLayout(gridLayout);
 
 			Label formManualModeServerLabel = new Label(formManualModeContainer, SWT.NONE);
-			formManualModeServerLabel.setText("サーバー");
+			formManualModeServerLabel.setText("Server");
 			application.initControl(formManualModeServerLabel);
 
 			formManualModeRoomServerCombo = new Combo(formManualModeContainer, SWT.NONE);
@@ -433,7 +433,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formManualModeRoomServerButton);
 
 			Label formManualModeAddressLabel = new Label(formManualModeContainer, SWT.NONE);
-			formManualModeAddressLabel.setText("アドレス");
+			formManualModeAddressLabel.setText("address");
 			application.initControl(formManualModeAddressLabel);
 
 			formManualModeRoomAddressCombo = new Combo(formManualModeContainer, SWT.NONE);
@@ -454,7 +454,7 @@ public class RoomWindow implements IAppWindow {
 			formMyRoomModeContainer.setLayout(gridLayout);
 
 			Label formServerModeEntryLabel = new Label(formMyRoomModeContainer, SWT.NONE);
-			formServerModeEntryLabel.setText("ホスト:ポート");
+			formServerModeEntryLabel.setText("Host: Port");
 			formServerModeEntryLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(formServerModeEntryLabel);
 
@@ -470,12 +470,12 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formMyRoomModePortSpinner);
 
 			formMyRoomModeStartButton = new Button(formMyRoomModeContainer, SWT.PUSH);
-			formMyRoomModeStartButton.setText("起動する");
+			formMyRoomModeStartButton.setText("to start");
 			formMyRoomModeStartButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 			application.initControl(formMyRoomModeStartButton);
 
 			Label formMyRoomModeAddressLabel = new Label(formMyRoomModeContainer, SWT.NONE);
-			formMyRoomModeAddressLabel.setText("サーバー");
+			formMyRoomModeAddressLabel.setText("server");
 			formMyRoomModeAddressLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(formMyRoomModeAddressLabel);
 
@@ -484,14 +484,14 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formMyRoomModeRoomServer);
 
 			formMyRoomModeEntryButton = new Button(formMyRoomModeContainer, SWT.PUSH);
-			formMyRoomModeEntryButton.setText("検索登録");
+			formMyRoomModeEntryButton.setText("Search registration");
 			formMyRoomModeEntryButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 			application.initControl(formMyRoomModeEntryButton);
 
 			roomModeStackLayout.topControl = formAutoModeContainer;
 
 			Group formEditGroup = new Group(leftContainer, SWT.NONE);
-			formEditGroup.setText("部屋情報");
+			formEditGroup.setText("Room information");
 			formEditGroup.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 			gridLayout = new GridLayout(2, false);
 			gridLayout.marginWidth = 3;
@@ -499,7 +499,7 @@ public class RoomWindow implements IAppWindow {
 			formEditGroup.setLayout(gridLayout);
 
 			Label formMasterNameLabel = new Label(formEditGroup, SWT.NONE);
-			formMasterNameLabel.setText("部屋主");
+			formMasterNameLabel.setText("Room owner");
 			formMasterNameLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(formMasterNameLabel);
 
@@ -508,7 +508,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formMasterNameText);
 
 			Label formTitleLabel = new Label(formEditGroup, SWT.NONE);
-			formTitleLabel.setText("部屋名");
+			formTitleLabel.setText("Room name");
 			formTitleLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(formTitleLabel);
 
@@ -518,7 +518,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formTitleText);
 
 			Label formPasswordLabel = new Label(formEditGroup, SWT.NONE);
-			formPasswordLabel.setText("パスワード");
+			formPasswordLabel.setText("password");
 			formPasswordLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(formPasswordLabel);
 
@@ -528,7 +528,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formPasswordText);
 
 			Label formMaxPlayersLabel = new Label(formEditGroup, SWT.NONE);
-			formMaxPlayersLabel.setText("定員");
+			formMaxPlayersLabel.setText("Capacity");
 			formMaxPlayersLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(formMaxPlayersLabel);
 
@@ -548,7 +548,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(formMaxPlayersSpiner);
 
 			Label formTimestampLabel = new Label(formMaxPlayerContainer, SWT.NONE);
-			formTimestampLabel.setText("作成日時");
+			formTimestampLabel.setText("Creation date and time");
 			formTimestampLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(formTimestampLabel);
 
@@ -570,7 +570,7 @@ public class RoomWindow implements IAppWindow {
 			formDescriptionContainer.setLayout(gridLayout);
 
 			Label formDescriptionLabel = new Label(formDescriptionContainer, SWT.NONE);
-			formDescriptionLabel.setText("部屋の紹介　(検索に表示されます)");
+			formDescriptionLabel.setText("Introduction of the room (displayed in the search)");
 			gridData = new GridData();
 			gridData.horizontalIndent = 3;
 			formDescriptionLabel.setLayoutData(gridData);
@@ -590,7 +590,7 @@ public class RoomWindow implements IAppWindow {
 			formRemarksContainer.setLayout(gridLayout);
 
 			Label formRemarksLabel = new Label(formRemarksContainer, SWT.NONE);
-			formRemarksLabel.setText("備考　(検索に表示されません)");
+			formRemarksLabel.setText("Remarks (not displayed in the search)");
 			gridData = new GridData();
 			gridData.horizontalIndent = 3;
 			formRemarksLabel.setLayoutData(gridData);
@@ -610,17 +610,17 @@ public class RoomWindow implements IAppWindow {
 			formEditControlContainer.setLayout(gridLayout);
 
 			formEditSaveButton = new Button(formEditControlContainer, SWT.PUSH);
-			formEditSaveButton.setText("保存する");
+			formEditSaveButton.setText("save");
 			formEditSaveButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 			application.initControl(formEditSaveButton);
 
 			formEditLoadButton = new Button(formEditControlContainer, SWT.PUSH);
-			formEditLoadButton.setText("読み込む");
+			formEditLoadButton.setText("Read");
 			formEditLoadButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 			application.initControl(formEditLoadButton);
 
 			formEditSubmitButton = new Button(formEditControlContainer, SWT.PUSH);
-			formEditSubmitButton.setText("部屋情報を更新");
+			formEditSubmitButton.setText("Update room information");
 			formEditSubmitButton.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false));
 			application.initControl(formEditSubmitButton);
 
@@ -645,7 +645,7 @@ public class RoomWindow implements IAppWindow {
 			wlanAdaptorContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 			Label wlanAdapterListLabel = new Label(wlanAdaptorContainer, SWT.NONE);
-			wlanAdapterListLabel.setText("無線LANアダプタ");
+			wlanAdapterListLabel.setText("Wireless LAN adapter");
 			application.initControl(wlanAdapterListLabel);
 
 			wlanAdapterListCombo = new Combo(wlanAdaptorContainer, SWT.READ_ONLY);
@@ -653,7 +653,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(wlanAdapterListCombo);
 
 			wlanPspCommunicationButton = new Button(wlanAdaptorContainer, SWT.TOGGLE);
-			wlanPspCommunicationButton.setText("PSPと通信開始");
+			wlanPspCommunicationButton.setText("Start communication with PSP");
 			application.initControl(wlanPspCommunicationButton);
 
 			packetMonitorTable = new TableViewer(centerUpperContainer, SWT.SINGLE | SWT.BORDER | SWT.FULL_SELECTION);
@@ -666,11 +666,11 @@ public class RoomWindow implements IAppWindow {
 			SwtUtils.installSorter(packetMonitorTable, packetMonitorIsMineColumn, TraficStatistics.MINE_SORTER);
 
 			TableColumn packetMonitorMacAddressColumn = new TableColumn(packetMonitorTable.getTable(), SWT.LEFT);
-			packetMonitorMacAddressColumn.setText("MACアドレス");
+			packetMonitorMacAddressColumn.setText("MAC address");
 			SwtUtils.installSorter(packetMonitorTable, packetMonitorMacAddressColumn, TraficStatistics.MAC_ADDRESS_SORTER);
 
 			TableColumn packetMonitorPlayerNameColumn = new TableColumn(packetMonitorTable.getTable(), SWT.LEFT);
-			packetMonitorPlayerNameColumn.setText("ユーザー名");
+			packetMonitorPlayerNameColumn.setText("username");
 			SwtUtils.installSorter(packetMonitorTable, packetMonitorPlayerNameColumn, TraficStatistics.PLAYER_NAME_SORTER);
 
 			TableColumn packetMonitorInSpeedColumn = new TableColumn(packetMonitorTable.getTable(), SWT.RIGHT);
@@ -682,11 +682,11 @@ public class RoomWindow implements IAppWindow {
 			SwtUtils.installSorter(packetMonitorTable, packetMonitorOutSpeedColumn, TraficStatistics.OUT_SPEED_SORTER);
 
 			TableColumn packetMonitorTotalInBytesColumn = new TableColumn(packetMonitorTable.getTable(), SWT.RIGHT);
-			packetMonitorTotalInBytesColumn.setText("In 累積バイト");
+			packetMonitorTotalInBytesColumn.setText("In cumulative bytes");
 			SwtUtils.installSorter(packetMonitorTable, packetMonitorTotalInBytesColumn, TraficStatistics.TOTAL_IN_SORTER);
 
 			TableColumn packetMonitorTotalOutBytesColumn = new TableColumn(packetMonitorTable.getTable(), SWT.RIGHT);
-			packetMonitorTotalOutBytesColumn.setText("Out 累積バイト");
+			packetMonitorTotalOutBytesColumn.setText("Out cumulative bytes");
 			SwtUtils.installSorter(packetMonitorTable, packetMonitorTotalOutBytesColumn, TraficStatistics.TOTAL_OUT_SORTER);
 
 			packetMonitorTable.setContentProvider(new TraficStatistics.ContentProvider());
@@ -764,7 +764,7 @@ public class RoomWindow implements IAppWindow {
 			ssidContainer.setLayout(gridLayout);
 
 			Label ssidCurrentSsidLabel = new Label(ssidContainer, SWT.NONE);
-			ssidCurrentSsidLabel.setText("現在のSSID");
+			ssidCurrentSsidLabel.setText("Current SSID");
 			ssidCurrentSsidLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(ssidCurrentSsidLabel);
 
@@ -773,7 +773,7 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(ssidCurrentSsidText);
 
 			ssidMatchLabel = new Label(ssidContainer, SWT.NONE);
-			ssidMatchLabel.setText("絞り込み");
+			ssidMatchLabel.setText("search");
 			ssidMatchLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(ssidMatchLabel);
 
@@ -792,7 +792,7 @@ public class RoomWindow implements IAppWindow {
 			ssidControlContainer.setLayout(gridLayout);
 
 			ssidStartScan = new Button(ssidControlContainer, SWT.TOGGLE);
-			ssidStartScan.setText("スキャン開始");
+			ssidStartScan.setText("Start scanning");
 			ssidStartScan.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 			ssidStartScan.setEnabled(false);
 			application.initControl(ssidStartScan);
@@ -804,11 +804,11 @@ public class RoomWindow implements IAppWindow {
 			application.initControl(ssidScanIntervalSpinner);
 
 			Label ssidScanIntervalLabel = new Label(ssidControlContainer, SWT.NONE);
-			ssidScanIntervalLabel.setText("ミリ秒");
+			ssidScanIntervalLabel.setText("millisecond");
 			application.initControl(ssidScanIntervalLabel);
 
 			ssidAutoDetectCheck = new Button(ssidControlContainer, SWT.CHECK | SWT.FLAT);
-			ssidAutoDetectCheck.setText("自動追尾");
+			ssidAutoDetectCheck.setText("Automatic tracking");
 			ssidAutoDetectCheck.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
 			application.initControl(ssidAutoDetectCheck);
 
@@ -825,7 +825,7 @@ public class RoomWindow implements IAppWindow {
 			ssidListTableSsidColumn.setText("SSID");
 
 			TableColumn ssidListTableRssiColumn = new TableColumn(ssidListTable, SWT.RIGHT);
-			ssidListTableRssiColumn.setText("強度");
+			ssidListTableRssiColumn.setText("strength");
 
 			roomPlayerListTable = new TableViewer(rightSashForm, SWT.SINGLE | SWT.BORDER | SWT.FULL_SELECTION);
 			roomPlayerListTable.getTable().setHeaderVisible(true);
@@ -835,7 +835,7 @@ public class RoomWindow implements IAppWindow {
 			SwtUtils.installSorter(roomPlayerListTable, roomPlayerSsidChaseColumn, Player.SSID_CHASE_SORTER);
 
 			TableColumn roomPlayerNameColumn = new TableColumn(roomPlayerListTable.getTable(), SWT.LEFT);
-			roomPlayerNameColumn.setText("名前");
+			roomPlayerNameColumn.setText("name");
 			SwtUtils.installSorter(roomPlayerListTable, roomPlayerNameColumn, Player.NANE_SORTER);
 
 			TableColumn roomPlayerSsidColumn = new TableColumn(roomPlayerListTable.getTable(), SWT.LEFT);
@@ -860,7 +860,7 @@ public class RoomWindow implements IAppWindow {
 			macFilteringContainer.setLayout(gridLayout);
 
 			Label macFilteringLabel = new Label(macFilteringContainer, SWT.NONE);
-			macFilteringLabel.setText("MACアドレス フィルタリング");
+			macFilteringLabel.setText("MAC address filtering");
 			macFilteringLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 			application.initControl(macFilteringLabel);
 
@@ -871,7 +871,7 @@ public class RoomWindow implements IAppWindow {
 			macFilteringWhiteListContainer.setLayout(gridLayout);
 
 			macFilteringWhiteListCheck = new Button(macFilteringWhiteListContainer, SWT.CHECK | SWT.FLAT);
-			macFilteringWhiteListCheck.setText("ホワイトリストを有効化");
+			macFilteringWhiteListCheck.setText("Enable white list");
 			application.initControl(macFilteringWhiteListCheck);
 
 			macFilteringWhiteList = new List(macFilteringWhiteListContainer, SWT.BORDER | SWT.SINGLE);
@@ -882,7 +882,7 @@ public class RoomWindow implements IAppWindow {
 			macFilteringBlackListContainer.setLayout(gridLayout);
 
 			macFilteringBlackListCheck = new Button(macFilteringBlackListContainer, SWT.CHECK | SWT.FLAT);
-			macFilteringBlackListCheck.setText("ブラックリストを有効化");
+			macFilteringBlackListCheck.setText("Enable blacklist");
 			application.initControl(macFilteringBlackListCheck);
 
 			macFilteringBlackList = new List(macFilteringBlackListContainer, SWT.BORDER | SWT.SINGLE);
@@ -915,13 +915,13 @@ public class RoomWindow implements IAppWindow {
 
 			statusTunnelConnectionLabel = new Label(statusBarContainer, SWT.NONE);
 			statusTunnelConnectionLabel.setForeground(colorRegistry.get(PlayClient.COLOR_NG));
-			statusTunnelConnectionLabel.setText("トンネル未接続");
+			statusTunnelConnectionLabel.setText("Tunnel not connected");
 			application.initControl(statusTunnelConnectionLabel);
 
 			new Label(statusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
 			statusTraficStatusLabel = new Label(statusBarContainer, SWT.NONE);
-			statusTraficStatusLabel.setText("トラフィックはありません");
+			statusTraficStatusLabel.setText("No traffic");
 			application.initControl(statusTraficStatusLabel);
 
 			new Label(statusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
@@ -1125,7 +1125,7 @@ public class RoomWindow implements IAppWindow {
 					selectRoomServer(new ServerSelectAction() {
 						@Override
 						public String getOkLabel() {
-							return "部屋を作成する";
+							return "Create a room";
 						}
 
 						@Override
@@ -1279,7 +1279,7 @@ public class RoomWindow implements IAppWindow {
 					selectRoomServer(new ServerSelectAction() {
 						@Override
 						public String getOkLabel() {
-							return "検索に登録する";
+							return "Register for search";
 						}
 
 						@Override
@@ -1458,7 +1458,7 @@ public class RoomWindow implements IAppWindow {
 				public void handleEvent(Event event) {
 					if (wlanPspCommunicationButton.getSelection()) {
 						if (startPacketCapturing()) {
-							wlanPspCommunicationButton.setText("PSPと通信中");
+							wlanPspCommunicationButton.setText("Communicating with PSP");
 							wlanAdapterListCombo.setEnabled(false);
 
 							if (currentWlanLibrary.isSSIDEnabled()) {
@@ -1661,7 +1661,7 @@ public class RoomWindow implements IAppWindow {
 			Menu playerMenu = new Menu(shell, SWT.POP_UP);
 
 			playerMenuChaseSsid = new MenuItem(playerMenu, SWT.CHECK);
-			playerMenuChaseSsid.setText("このプレイヤーのSSIDを追尾");
+			playerMenuChaseSsid.setText("Track the SSID of this player");
 			playerMenuChaseSsid.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1676,7 +1676,7 @@ public class RoomWindow implements IAppWindow {
 			});
 
 			playerMenuSetSsid = new MenuItem(playerMenu, SWT.PUSH);
-			playerMenuSetSsid.setText("このSSIDに設定");
+			playerMenuSetSsid.setText("Set to this SSID");
 			playerMenuSetSsid.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1690,7 +1690,7 @@ public class RoomWindow implements IAppWindow {
 			});
 
 			playerMenuCopySsid = new MenuItem(playerMenu, SWT.PUSH);
-			playerMenuCopySsid.setText("このSSIDをコピー");
+			playerMenuCopySsid.setText("Copy this SSID");
 			playerMenuCopySsid.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1706,7 +1706,7 @@ public class RoomWindow implements IAppWindow {
 			new MenuItem(playerMenu, SWT.SEPARATOR);
 
 			playerMenuKick = new MenuItem(playerMenu, SWT.PUSH);
-			playerMenuKick.setText("キック");
+			playerMenuKick.setText("kick");
 			playerMenuKick.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1733,7 +1733,7 @@ public class RoomWindow implements IAppWindow {
 			new MenuItem(playerMenu, SWT.SEPARATOR);
 
 			playerMenuMasterTransfer = new MenuItem(playerMenu, SWT.PUSH);
-			playerMenuMasterTransfer.setText("部屋主を委譲");
+			playerMenuMasterTransfer.setText("Delegate the room owner");
 			playerMenuMasterTransfer.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1813,7 +1813,7 @@ public class RoomWindow implements IAppWindow {
 			Menu statusServerAddressMenu = new Menu(shell, SWT.POP_UP);
 
 			statusServerAddressMenuCopy = new MenuItem(statusServerAddressMenu, SWT.PUSH);
-			statusServerAddressMenuCopy.setText("アドレスをコピー");
+			statusServerAddressMenuCopy.setText("Copy address");
 			statusServerAddressMenuCopy.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1866,10 +1866,10 @@ public class RoomWindow implements IAppWindow {
 
 						switch (application.getSettings().getTunnelTransportLayer()) {
 						case TCP:
-							statusTunnelConnectionMenuChangeTransport.setText("UDPで接続し直す");
+							statusTunnelConnectionMenuChangeTransport.setText("Reconnect with UDP");
 							break;
 						case UDP:
-							statusTunnelConnectionMenuChangeTransport.setText("TCPで接続し直す");
+							statusTunnelConnectionMenuChangeTransport.setText("Reconnect with TCP");
 							break;
 						}
 						break;
@@ -1882,7 +1882,7 @@ public class RoomWindow implements IAppWindow {
 			Menu packetMonitorMenu = new Menu(shell, SWT.POP_UP);
 
 			packetMonitorMenuCopy = new MenuItem(packetMonitorMenu, SWT.PUSH);
-			packetMonitorMenuCopy.setText("MACアドレスとユーザー名をコピー");
+			packetMonitorMenuCopy.setText("Copy MAC address and username");
 			packetMonitorMenuCopy.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1930,7 +1930,7 @@ public class RoomWindow implements IAppWindow {
 			new MenuItem(packetMonitorMenu, SWT.SEPARATOR);
 
 			packetMonitorMenuClear = new MenuItem(packetMonitorMenu, SWT.PUSH);
-			packetMonitorMenuClear.setText("累積バイトをクリア");
+			packetMonitorMenuClear.setText("Clear cumulative bytes");
 			packetMonitorMenuClear.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1964,13 +1964,13 @@ public class RoomWindow implements IAppWindow {
 					if (validStats) {
 						boolean onWhiteList = macFilteringWhiteList.indexOf(stats.macAddress) != -1;
 						packetMonitorMenuWhiteList.setSelection(onWhiteList);
-						packetMonitorMenuWhiteList.setText(onWhiteList ? "ホワイトリストから削除" : "ホワイトリストに追加");
+						packetMonitorMenuWhiteList.setText(onWhiteList ? "Removed from white list" : "Add to white list");
 						boolean onBlackList = macFilteringBlackList.indexOf(stats.macAddress) != -1;
 						packetMonitorMenuBlackList.setSelection(onBlackList);
-						packetMonitorMenuBlackList.setText(onBlackList ? "ブラックリストから削除" : "ブラックリストに追加");
+						packetMonitorMenuBlackList.setText(onBlackList ? "Removed from blacklist" : "Add to blacklist");
 					} else {
-						packetMonitorMenuWhiteList.setText("ホワイトリストに追加");
-						packetMonitorMenuBlackList.setText("ブラックリストに追加");
+						packetMonitorMenuWhiteList.setText("Add to white list");
+						packetMonitorMenuBlackList.setText("Add to blacklist");
 					}
 				}
 			});
@@ -1978,7 +1978,7 @@ public class RoomWindow implements IAppWindow {
 			Menu macFilteringWhiteListMenu = new Menu(shell, SWT.POP_UP);
 
 			macFilteringWhiteListMenuRemove = new MenuItem(macFilteringWhiteListMenu, SWT.PUSH);
-			macFilteringWhiteListMenuRemove.setText("削除する");
+			macFilteringWhiteListMenuRemove.setText("delete");
 			macFilteringWhiteListMenuRemove.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -2002,7 +2002,7 @@ public class RoomWindow implements IAppWindow {
 			Menu macFilteringBlackListMenu = new Menu(shell, SWT.POP_UP);
 
 			macFilteringBlackListMenuRemove = new MenuItem(macFilteringBlackListMenu, SWT.PUSH);
-			macFilteringBlackListMenuRemove.setText("削除する");
+			macFilteringBlackListMenuRemove.setText("delete");
 			macFilteringBlackListMenuRemove.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -2134,7 +2134,7 @@ public class RoomWindow implements IAppWindow {
 					public void run() {
 						try {
 							widgets.wlanAdapterListCombo.setEnabled(true);
-							widgets.wlanPspCommunicationButton.setText("PSPと通信開始");
+							widgets.wlanPspCommunicationButton.setText("Start communication with PSP");
 							widgets.wlanPspCommunicationButton.setEnabled(true);
 
 							WlanLibrary library = application.getSettings().getWlanLibrary();
@@ -2319,7 +2319,7 @@ public class RoomWindow implements IAppWindow {
 
 								String text;
 								if (actualSentBytes == 0 && actualRecievedBytes == 0) {
-									text = " トラフィックはありません ";
+									text = " No traffic ";
 								} else {
 									double totalInKbps = ((double) actualRecievedBytes) * 8 / intervalMillis;
 									double totalOutKbps = ((double) actualSentBytes) * 8 / intervalMillis;
@@ -2395,7 +2395,7 @@ public class RoomWindow implements IAppWindow {
 					application.connectTcp(socketAddress, roomProtocol);
 					return;
 				} catch (SocketTimeoutException e) {
-					ErrorLog log = new ErrorLog("サーバーに接続できませんでした");
+					ErrorLog log = new ErrorLog("Could not connect to the server");
 					widgets.logViewer.appendMessage(log);
 				} catch (IOException e) {
 					ErrorLog log = new ErrorLog(e);
@@ -2466,7 +2466,7 @@ public class RoomWindow implements IAppWindow {
 			}
 
 			if (list.isEmpty()) {
-				ErrorLog log = new ErrorLog("ルームサーバーが見つかりません");
+				ErrorLog log = new ErrorLog("Room server not found");
 				widgets.logViewer.appendMessage(log);
 
 				action.cancel();
@@ -2521,7 +2521,7 @@ public class RoomWindow implements IAppWindow {
 				if (address == null) {
 					revertRoomFormAutoModeButton();
 
-					ErrorLog log = new ErrorLog("アドレスを取得できませんでした");
+					ErrorLog log = new ErrorLog("Could not get the address");
 					widgets.logViewer.appendMessage(log);
 					return;
 				}
@@ -2538,7 +2538,7 @@ public class RoomWindow implements IAppWindow {
 			if (socketAddress == null) {
 				revertRoomFormAutoModeButton();
 
-				ErrorLog log = new ErrorLog("サーバーアドレスが正しくありません");
+				ErrorLog log = new ErrorLog("Incorrect server address");
 				widgets.logViewer.appendMessage(log);
 				return;
 			}
@@ -2575,7 +2575,7 @@ public class RoomWindow implements IAppWindow {
 		shell.open();
 
 		if (sessionState != SessionState.OFFLINE) {
-			ErrorLog log = new ErrorLog("現在部屋にログイン中です");
+			ErrorLog log = new ErrorLog("You are currently logged in to the room");
 			widgets.logViewer.appendMessage(log);
 			return;
 		}
@@ -2584,7 +2584,7 @@ public class RoomWindow implements IAppWindow {
 
 		InetSocketAddress socketAddress = Utility.parseSocketAddress(room.getServerAddress());
 		if (socketAddress == null) {
-			ErrorLog log = new ErrorLog("サーバーアドレスが正しくありません");
+			ErrorLog log = new ErrorLog("Incorrect server address");
 			widgets.logViewer.appendMessage(log);
 			return;
 		}
@@ -2605,14 +2605,14 @@ public class RoomWindow implements IAppWindow {
 
 		String address = widgets.formManualModeRoomServerCombo.getText();
 		if (Utility.isEmpty(address)) {
-			ErrorLog log = new ErrorLog("サーバーアドレスを入力してください");
+			ErrorLog log = new ErrorLog("Please enter the server address");
 			widgets.logViewer.appendMessage(log);
 			return;
 		}
 
 		InetSocketAddress socketAddress = Utility.parseSocketAddress(address);
 		if (socketAddress == null) {
-			ErrorLog log = new ErrorLog("サーバーアドレスが正しくありません");
+			ErrorLog log = new ErrorLog("Incorrect server address");
 			widgets.logViewer.appendMessage(log);
 			return;
 		}
@@ -2634,7 +2634,7 @@ public class RoomWindow implements IAppWindow {
 
 		String address = widgets.formManualModeRoomAddressCombo.getText();
 		if (Utility.isEmpty(address)) {
-			ErrorLog log = new ErrorLog("サーバーアドレスを入力してください");
+			ErrorLog log = new ErrorLog("Please enter the server address");
 			widgets.logViewer.appendMessage(log);
 			return;
 		}
@@ -2650,14 +2650,14 @@ public class RoomWindow implements IAppWindow {
 			roomMasterName = tokens[2];
 			break;
 		default:
-			ErrorLog log = new ErrorLog("サーバーアドレスが正しくありません");
+			ErrorLog log = new ErrorLog("Incorrect server address");
 			widgets.logViewer.appendMessage(log);
 			return;
 		}
 
 		InetSocketAddress socketAddress = Utility.parseSocketAddress(tokens[0], tokens[1]);
 		if (socketAddress == null) {
-			ErrorLog log = new ErrorLog("サーバーアドレスが正しくありません");
+			ErrorLog log = new ErrorLog("Incorrect server address");
 			widgets.logViewer.appendMessage(log);
 			return;
 		}
@@ -2685,7 +2685,7 @@ public class RoomWindow implements IAppWindow {
 
 		String title = widgets.formTitleText.getText();
 		if (Utility.isEmpty(title)) {
-			RoomLog log = new RoomLog("部屋名を入力してください");
+			RoomLog log = new RoomLog("Please enter the room name");
 			widgets.logViewer.appendMessage(log);
 
 			widgets.formTitleText.setFocus();
@@ -2709,7 +2709,7 @@ public class RoomWindow implements IAppWindow {
 			widgets.formMyRoomModePortSpinner.setEnabled(false);
 			widgets.formMyRoomModeStartButton.setEnabled(false);
 		} catch (BindException e) {
-			ErrorLog log = new ErrorLog("すでに同じポートが使用されています");
+			ErrorLog log = new ErrorLog("The same port is already in use");
 			widgets.logViewer.appendMessage(log);
 		} catch (RuntimeException e) {
 			application.getArenaWindow().appendToSystemLog(Utility.stackTraceToString(e), true);
@@ -2759,7 +2759,7 @@ public class RoomWindow implements IAppWindow {
 				if (address == null) {
 					updateMyRoomEntryForm(false);
 
-					ErrorLog log = new ErrorLog("アドレスを取得できませんでした");
+					ErrorLog log = new ErrorLog("Could not get the address");
 					widgets.logViewer.appendMessage(log);
 					return;
 				}
@@ -2809,13 +2809,13 @@ public class RoomWindow implements IAppWindow {
 			}
 
 			if (entryOn) {
-				widgets.formMyRoomModeEntryButton.setText("検索解除");
+				widgets.formMyRoomModeEntryButton.setText("Cancel search");
 				widgets.formMyRoomModeEntryButton.setSelection(true);
 				widgets.formMyRoomModeEntryButton.setEnabled(true);
 				widgets.formMyRoomModeHostText.setEnabled(false);
 			} else {
 				widgets.formMyRoomModeRoomServer.setText("");
-				widgets.formMyRoomModeEntryButton.setText("検索登録");
+				widgets.formMyRoomModeEntryButton.setText("Search registration");
 				widgets.formMyRoomModeEntryButton.setSelection(false);
 				widgets.formMyRoomModeEntryButton.setEnabled(sessionState != SessionState.OFFLINE);
 				widgets.formMyRoomModeHostText.setEnabled(true);
@@ -2914,7 +2914,7 @@ public class RoomWindow implements IAppWindow {
 	private boolean checkRoomFormTitle() {
 		String title = widgets.formTitleText.getText();
 		if (Utility.isEmpty(title)) {
-			RoomLog log = new RoomLog("部屋名を入力してください");
+			RoomLog log = new RoomLog("Please enter the room name");
 			widgets.logViewer.appendMessage(log);
 
 			widgets.formTitleText.setFocus();
@@ -2950,7 +2950,7 @@ public class RoomWindow implements IAppWindow {
 			break;
 		}
 		case MY_ROOM_MASTER: {
-			ConfirmDialog dialog = new ConfirmDialog(shell, "マイルームが起動したままです", "マイルームを閉じます。よろしいですか？");
+			ConfirmDialog dialog = new ConfirmDialog(shell, "My room is still running", "Close my room. Is it OK?");
 			switch (dialog.open()) {
 			case IDialogConstants.OK_ID:
 				myRoomEngine.closeRoom();
@@ -2980,7 +2980,7 @@ public class RoomWindow implements IAppWindow {
 	private boolean commitRoomEditForm() {
 		String title = widgets.formTitleText.getText();
 		if (Utility.isEmpty(title)) {
-			ErrorLog log = new ErrorLog("部屋名を入力してください");
+			ErrorLog log = new ErrorLog("Please enter the room name");
 			widgets.logViewer.appendMessage(log);
 
 			widgets.formTitleText.setFocus();
@@ -2998,7 +2998,7 @@ public class RoomWindow implements IAppWindow {
 
 			myRoomEngine.updateRoom();
 
-			RoomLog log = new RoomLog("部屋情報を更新しました");
+			RoomLog log = new RoomLog("Updated room information");
 			widgets.logViewer.appendMessage(log);
 
 			widgets.chatText.setFocus();
@@ -3029,7 +3029,7 @@ public class RoomWindow implements IAppWindow {
 				roomConnection.send(buf);
 				return true;
 			default:
-				InfoLog log = new InfoLog("サーバーにログインしていません");
+				InfoLog log = new InfoLog("You are not logged in to the server");
 				widgets.logViewer.appendMessage(log);
 			}
 		}
@@ -3118,7 +3118,7 @@ public class RoomWindow implements IAppWindow {
 			return;
 		isSSIDScaning = startScan;
 		widgets.ssidStartScan.setSelection(isSSIDScaning);
-		widgets.ssidStartScan.setText(isSSIDScaning ? "スキャン中" : "スキャン開始");
+		widgets.ssidStartScan.setText(isSSIDScaning ? "Scanning" : "Start scanning");
 		if (isSSIDScaning)
 			wakeupThread(wlanScannerThread);
 	}
@@ -3137,8 +3137,8 @@ public class RoomWindow implements IAppWindow {
 
 			switch (sessionState) {
 			case OFFLINE:
-				widgets.statusUserNameLabel.setText("部屋にログインしていません");
-				widgets.statusServerAddressLabel.setText("部屋アドレス なし");
+				widgets.statusUserNameLabel.setText("You are not logged in to the room");
+				widgets.statusServerAddressLabel.setText("No room address");
 				break;
 			default:
 				String roomAddress;
@@ -3148,8 +3148,8 @@ public class RoomWindow implements IAppWindow {
 					roomAddress = roomServerAddressPort + ":" + roomMasterName;
 				}
 
-				widgets.statusUserNameLabel.setText("ユーザー名: " + roomLoginName);
-				widgets.statusServerAddressLabel.setText("部屋アドレス  " + roomAddress);
+				widgets.statusUserNameLabel.setText("username: " + roomLoginName);
+				widgets.statusServerAddressLabel.setText("Room address  " + roomAddress);
 			}
 			widgets.statusBarContainer.layout();
 		} catch (SWTException e) {
@@ -3187,11 +3187,11 @@ public class RoomWindow implements IAppWindow {
 						sb.append("UDP");
 						break;
 					}
-				sb.append("トンネル接続中");
+				sb.append("During tunnel connection");
 				widgets.statusTunnelConnectionLabel.setText(sb.toString());
 			} else {
 				widgets.statusTunnelConnectionLabel.setForeground(colorRegistry.get(PlayClient.COLOR_NG));
-				widgets.statusTunnelConnectionLabel.setText("トンネル未接続");
+				widgets.statusTunnelConnectionLabel.setText("Tunnel not connected");
 			}
 			widgets.statusBarContainer.layout();
 		} catch (SWTException e) {
@@ -3262,7 +3262,7 @@ public class RoomWindow implements IAppWindow {
 			}
 			TableViewer viewer = widgets.roomPlayerListTable;
 
-			InfoLog log = new InfoLog(name + " が入室しました");
+			InfoLog log = new InfoLog(name + " Has entered the room");
 			widgets.logViewer.appendMessage(log);
 
 			if (!isActiveWindow && application.getSettings().isBallonNotifyRoom())
@@ -3305,7 +3305,7 @@ public class RoomWindow implements IAppWindow {
 	}
 
 	private void removeExitingRoomPlayer(String name) {
-		InfoLog log = new InfoLog(name + " が退室しました");
+		InfoLog log = new InfoLog(name + " Has left the room");
 		widgets.logViewer.appendMessage(log);
 		if (!isActiveWindow && application.getSettings().isBallonNotifyRoom())
 			application.balloonNotify(shell, log.getMessage());
@@ -3316,14 +3316,14 @@ public class RoomWindow implements IAppWindow {
 		switch (sessionState) {
 		case MY_ROOM_MASTER:
 		case ROOM_MASTER: {
-			RoomLog log = new RoomLog(name + " を部屋から追い出しました");
+			RoomLog log = new RoomLog(name + " Was kicked out of the room");
 			widgets.logViewer.appendMessage(log);
 			if (!isActiveWindow && application.getSettings().isBallonNotifyRoom())
 				application.balloonNotify(shell, log.getMessage());
 			break;
 		}
 		case ROOM_PARTICIPANT: {
-			RoomLog log = new RoomLog(name + " は部屋から追い出されました");
+			RoomLog log = new RoomLog(name + " Was kicked out of the room");
 			widgets.logViewer.appendMessage(log);
 			if (!isActiveWindow && application.getSettings().isBallonNotifyRoom())
 				application.balloonNotify(shell, log.getMessage());
@@ -3419,13 +3419,13 @@ public class RoomWindow implements IAppWindow {
 				return;
 
 			RoomLog log;
-			log = new RoomLog("部屋情報が更新されました");
+			log = new RoomLog("Room information has been updated");
 			widgets.logViewer.appendMessage(log);
 
 			if (!masterName.equals(roomMasterName)) {
 				roomMasterName = masterName;
 
-				log = new RoomLog("部屋主が " + roomMasterName + " に変更されました");
+				log = new RoomLog("The room owner " + roomMasterName + " Changed to");
 				widgets.logViewer.appendMessage(log);
 
 				if (!isActiveWindow && application.getSettings().isBallonNotifyRoom())
@@ -3486,20 +3486,20 @@ public class RoomWindow implements IAppWindow {
 				widgets.formModeSelectionCombo.setEnabled(true);
 
 				widgets.formAutoModeServerAddress.setText("");
-				widgets.formAutoModeRoomButton.setText("部屋を作成する");
+				widgets.formAutoModeRoomButton.setText("Create a room");
 				widgets.formAutoModeRoomButton.setEnabled(true);
 				widgets.formAutoModeContainer.layout();
 
 				widgets.formManualModeRoomServerCombo.setEnabled(true);
-				widgets.formManualModeRoomServerButton.setText("部屋作成");
+				widgets.formManualModeRoomServerButton.setText("Room creation");
 				widgets.formManualModeRoomServerButton.setEnabled(true);
 				widgets.formManualModeRoomAddressCombo.setEnabled(true);
-				widgets.formManualModeRoomAddressButton.setText("入室する");
+				widgets.formManualModeRoomAddressButton.setText("Enter the room");
 				widgets.formManualModeRoomAddressButton.setEnabled(true);
 				// window.roomFormManualModeContainer.layout();
 
 				widgets.formMyRoomModePortSpinner.setEnabled(true);
-				widgets.formMyRoomModeStartButton.setText("起動する");
+				widgets.formMyRoomModeStartButton.setText("to start");
 				widgets.formMyRoomModeStartButton.setEnabled(true);
 				widgets.formMyRoomModeEntryButton.setEnabled(false);
 
@@ -3515,7 +3515,7 @@ public class RoomWindow implements IAppWindow {
 				changeLobbyStateTo(LobbyUserState.LOGIN);
 				break;
 			case MY_ROOM_MASTER:
-				widgets.formMyRoomModeStartButton.setText("停止する");
+				widgets.formMyRoomModeStartButton.setText("Stop");
 				widgets.formMyRoomModeStartButton.setEnabled(true);
 
 				widgets.formMyRoomModeEntryButton.setEnabled(true);
@@ -3547,11 +3547,11 @@ public class RoomWindow implements IAppWindow {
 			case ROOM_MASTER:
 				switch (widgets.formModeSelectionCombo.getSelectionIndex()) {
 				case 0:
-					widgets.formAutoModeRoomButton.setText("ログアウト");
+					widgets.formAutoModeRoomButton.setText("Logout");
 					widgets.formAutoModeRoomButton.setEnabled(true);
 					break;
 				case 1:
-					widgets.formManualModeRoomServerButton.setText("ログアウト");
+					widgets.formManualModeRoomServerButton.setText("Logout");
 					widgets.formManualModeRoomServerButton.setEnabled(true);
 					widgets.formManualModeRoomAddressButton.setEnabled(false);
 					// window.roomFormManualModeContainer.layout();
@@ -3595,11 +3595,11 @@ public class RoomWindow implements IAppWindow {
 			case ROOM_PARTICIPANT:
 				switch (widgets.formModeSelectionCombo.getSelectionIndex()) {
 				case 0:
-					widgets.formAutoModeRoomButton.setText("退室する");
+					widgets.formAutoModeRoomButton.setText("Leave the room");
 					widgets.formAutoModeRoomButton.setEnabled(true);
 					break;
 				case 1:
-					widgets.formManualModeRoomAddressButton.setText("退室する");
+					widgets.formManualModeRoomAddressButton.setText("Leave the room");
 					widgets.formManualModeRoomAddressButton.setEnabled(true);
 					widgets.formManualModeRoomServerButton.setEnabled(false);
 					// window.roomFormManualModeContainer.layout();
@@ -3787,10 +3787,10 @@ public class RoomWindow implements IAppWindow {
 					isEntryCompleted = false;
 					roomServerHistoryManager.addCurrentItem();
 
-					RoomLog log = new RoomLog("マイルームの登録が解除されました");
+					RoomLog log = new RoomLog("My room has been unregistered");
 					widgets.logViewer.appendMessage(log);
 				} else {
-					ErrorLog log = new ErrorLog("マイルームを登録できませんでした");
+					ErrorLog log = new ErrorLog("My room could not be registered");
 					widgets.logViewer.appendMessage(log);
 				}
 			} catch (SWTException e) {
@@ -3805,7 +3805,7 @@ public class RoomWindow implements IAppWindow {
 
 		@Override
 		public void errorProtocolNumber(String number) {
-			String message = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number, IProtocol.NUMBER);
+			String message = String.format("Cannot connect because the protocol number does not match the server Server:%s Client:%s", number, IProtocol.NUMBER);
 			ErrorLog log = new ErrorLog(message);
 			widgets.logViewer.appendMessage(log);
 		}
@@ -3821,7 +3821,7 @@ public class RoomWindow implements IAppWindow {
 				MyRoomEntryProtocolDriver myroom = (MyRoomEntryProtocolDriver) driver;
 				myroom.isEntryCompleted = true;
 
-				RoomLog log = new RoomLog("マイルームを登録しました");
+				RoomLog log = new RoomLog("I registered my room");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -3829,7 +3829,7 @@ public class RoomWindow implements IAppWindow {
 		myRoomEntryHandlers.put(ProtocolConstants.MyRoom.ERROR_TCP_PORT_NOT_OPEN, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				ErrorLog log = new ErrorLog("マイルームのTCPポートが開放されていません");
+				ErrorLog log = new ErrorLog("My room TCP port is not open");
 				widgets.logViewer.appendMessage(log);
 				return false;
 			}
@@ -3837,7 +3837,7 @@ public class RoomWindow implements IAppWindow {
 		myRoomEntryHandlers.put(ProtocolConstants.MyRoom.ERROR_UDP_PORT_NOT_OPEN, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				ErrorLog log = new ErrorLog("マイルームのUDPポートが開放されていません");
+				ErrorLog log = new ErrorLog("My room's UDP port is not open");
 				widgets.logViewer.appendMessage(log);
 				return false;
 			}
@@ -3845,7 +3845,7 @@ public class RoomWindow implements IAppWindow {
 		myRoomEntryHandlers.put(ProtocolConstants.MyRoom.ERROR_INVALID_AUTH_CODE, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				ErrorLog log = new ErrorLog("マイルーム以外の登録はできません");
+				ErrorLog log = new ErrorLog("Registration other than My Room is only possible");
 				widgets.logViewer.appendMessage(log);
 				return false;
 			}
@@ -3905,7 +3905,7 @@ public class RoomWindow implements IAppWindow {
 				updateLoginStatus();
 				changeLobbyStateTo(LobbyUserState.PLAYING);
 
-				RoomLog log = new RoomLog("マイルームを起動しました");
+				RoomLog log = new RoomLog("I started my room");
 				widgets.logViewer.appendMessage(log);
 
 				addRoomPlayer(roomLoginName);
@@ -3934,7 +3934,7 @@ public class RoomWindow implements IAppWindow {
 					myRoomEntryConnection.disconnect();
 				changeStateTo(SessionState.OFFLINE);
 
-				RoomLog log = new RoomLog("マイルームを停止しました");
+				RoomLog log = new RoomLog("My room has stopped");
 				widgets.logViewer.appendMessage(log);
 			} catch (SWTException e) {
 			}
@@ -3977,7 +3977,7 @@ public class RoomWindow implements IAppWindow {
 				StringBuilder sb = new StringBuilder();
 				switch (sessionState) {
 				case CONNECTING_ROOM_MASTER: {
-					ServerLog log = new ServerLog("サーバーに接続しました");
+					ServerLog log = new ServerLog("Connected to the server");
 					widgets.logViewer.appendMessage(log);
 
 					sb.append(ProtocolConstants.Room.COMMAND_ROOM_CREATE);
@@ -3992,7 +3992,7 @@ public class RoomWindow implements IAppWindow {
 					break;
 				}
 				case CONNECTING_ROOM_PARTICIPANT: {
-					ServerLog log = new ServerLog("サーバーに接続しました");
+					ServerLog log = new ServerLog("Connected to the server");
 					widgets.logViewer.appendMessage(log);
 
 					sb.append(ProtocolConstants.Room.COMMAND_LOGIN);
@@ -4029,14 +4029,14 @@ public class RoomWindow implements IAppWindow {
 			switch (sessionState) {
 			case CONNECTING_ROOM_PARTICIPANT:
 			case CONNECTING_ROOM_MASTER: {
-				ErrorLog log = new ErrorLog("サーバーに接続できません");
+				ErrorLog log = new ErrorLog("Unable to connect to the server");
 				widgets.logViewer.appendMessage(log);
 				break;
 			}
 			case ROOM_PARTICIPANT:
 				clearRoomForm();
 			default:
-				ServerLog log = new ServerLog("サーバーと切断しました");
+				ServerLog log = new ServerLog("Disconnected from the server");
 				widgets.logViewer.appendMessage(log);
 			}
 
@@ -4052,7 +4052,7 @@ public class RoomWindow implements IAppWindow {
 
 		@Override
 		public void errorProtocolNumber(String number) {
-			String message = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number, IProtocol.NUMBER);
+			String message = String.format("Cannot connect because the protocol number does not match the server. Server:%s Client:%s", number, IProtocol.NUMBER);
 			ErrorLog log = new ErrorLog(message);
 			widgets.logViewer.appendMessage(log);
 		}
@@ -4070,7 +4070,7 @@ public class RoomWindow implements IAppWindow {
 				return;
 			}
 
-			TextDialog dialog = new TextDialog(shell, "パスワードを入力してください", "部屋にパスワードが設定されています", null, 180, SWT.NONE);
+			TextDialog dialog = new TextDialog(shell, "Please enter your password", "The password is set in the room", null, 180, SWT.NONE);
 			switch (dialog.open()) {
 			case IDialogConstants.OK_ID:
 				String password = dialog.getUserInput();
@@ -4087,7 +4087,7 @@ public class RoomWindow implements IAppWindow {
 				roomConnection.send(Utility.encode(sb));
 				break;
 			case IDialogConstants.CANCEL_ID:
-				RoomLog log = new RoomLog("入室をキャンセルしました");
+				RoomLog log = new RoomLog("I canceled my entry");
 				widgets.logViewer.appendMessage(log);
 				roomConnection.disconnect();
 				break;
@@ -4119,7 +4119,7 @@ public class RoomWindow implements IAppWindow {
 
 					changeStateTo(SessionState.ROOM_MASTER);
 
-					RoomLog log = new RoomLog("ルームサーバーで部屋を作成しました");
+					RoomLog log = new RoomLog("I created a room on the room server");
 					widgets.logViewer.appendMessage(log);
 
 					widgets.formMasterNameText.setText(roomLoginName);
@@ -4159,7 +4159,7 @@ public class RoomWindow implements IAppWindow {
 
 					roomAddressHistoryManager.addCurrentItem();
 
-					RoomLog log = new RoomLog("部屋に入りました");
+					RoomLog log = new RoomLog("I entered the room");
 					widgets.logViewer.appendMessage(log);
 				} catch (SWTException e) {
 				}
@@ -4217,7 +4217,7 @@ public class RoomWindow implements IAppWindow {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
 				updateTunnelStatus(true);
-				application.getArenaWindow().appendToSystemLog("トンネル通信の接続が開始しました", true);
+				application.getArenaWindow().appendToSystemLog("Tunnel communication connection has started", true);
 				return true;
 			}
 		});
@@ -4250,7 +4250,7 @@ public class RoomWindow implements IAppWindow {
 						return true;
 					}
 
-					RoomLog log = new RoomLog("部屋情報を修正しました");
+					RoomLog log = new RoomLog("Corrected room information");
 					widgets.logViewer.appendMessage(log);
 
 					widgets.chatText.setFocus();
@@ -4295,7 +4295,7 @@ public class RoomWindow implements IAppWindow {
 				if (roomLoginName.equals(kickedPlayer)) {
 					changeStateTo(SessionState.OFFLINE);
 
-					RoomLog log = new RoomLog("部屋から追い出されました");
+					RoomLog log = new RoomLog("I was kicked out of the room");
 					widgets.logViewer.appendMessage(log);
 				} else {
 					removeKickedRoomPlayer(kickedPlayer);
@@ -4320,7 +4320,7 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.NOTIFY_ROOM_DELETED, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				RoomLog log = new RoomLog("部屋が削除されました");
+				RoomLog log = new RoomLog("The room has been deleted");
 				widgets.logViewer.appendMessage(log);
 				if (!isActiveWindow && application.getSettings().isBallonNotifyRoom())
 					application.balloonNotify(shell, log.getMessage());
@@ -4340,21 +4340,21 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.NOTIFY_ROOM_AGE_OLD, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				processAdminNotify("部屋作成から長時間経過しました。15分後に自動解散します。");
+				processAdminNotify("It's been a long time since the room was created. It will be automatically disbanded after 15 minutes.");
 				return true;
 			}
 		});
 		roomHandlers.put(ProtocolConstants.Room.NOTIFY_TUNNEL_COMMUNICATION_IDLE, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				processAdminNotify("無通信状態です。15分後に自動退出します。");
+				processAdminNotify("There is no communication. You will automatically leave after 15 minutes.");
 				return true;
 			}
 		});
 		roomHandlers.put(ProtocolConstants.Room.ERROR_LOGIN_DUPLICATED_NAME, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				ErrorLog log = new ErrorLog("同名のユーザーが既にログインしているのでログインできません");
+				ErrorLog log = new ErrorLog("I can't log in because a user with the same name is already logged in");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -4362,7 +4362,7 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.ERROR_LOGIN_ROOM_NOT_EXIST, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				ErrorLog log = new ErrorLog("ログインしようとしている部屋は存在しません");
+				ErrorLog log = new ErrorLog("The room you are trying to log in to does not exist");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -4370,7 +4370,7 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.ERROR_LOGIN_BEYOND_CAPACITY, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				ErrorLog log = new ErrorLog("部屋が満室なので入れません");
+				ErrorLog log = new ErrorLog("I can't enter because the room is full");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -4378,7 +4378,7 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.ERROR_ROOM_CREATE_INVALID_DATA_ENTRY, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				ErrorLog log = new ErrorLog("部屋の情報に不正な値があります");
+				ErrorLog log = new ErrorLog("There is an invalid value in the room information");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -4386,7 +4386,7 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.ERROR_LOGIN_PASSWORD_FAIL, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				RoomLog log = new RoomLog("部屋パスワードが違います");
+				RoomLog log = new RoomLog("The room password is wrong");
 				widgets.logViewer.appendMessage(log);
 				promptRoomPassword();
 				return true;
@@ -4395,7 +4395,7 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.ERROR_ROOM_CREATE_DUPLICATED_NAME, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				ErrorLog log = new ErrorLog("同名のユーザーで既に部屋が作成されているので作成できません");
+				ErrorLog log = new ErrorLog("The room has already been created by the user with the same name, so it cannot be created.");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -4403,7 +4403,7 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.ERROR_ROOM_CREATE_BEYOND_LIMIT, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				RoomLog log = new RoomLog("部屋数が上限に達しましたので部屋を作成できません");
+				RoomLog log = new RoomLog("The number of rooms has reached the upper limit, so you cannot create a room.");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -4411,7 +4411,8 @@ public class RoomWindow implements IAppWindow {
 		roomHandlers.put(ProtocolConstants.Room.ERROR_ROOM_TRANSFER_DUPLICATED_NAME, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver client, String argument) {
-				ErrorLog log = new ErrorLog("同名のユーザーで既に部屋が作成されているので委譲できません");
+				ErrorLog log = new ErrorLog("\r\n"
+						+ "Cannot be delegated because the room has already been created by the user with the same name");
 				widgets.logViewer.appendMessage(log);
 				return true;
 			}
@@ -4509,7 +4510,7 @@ public class RoomWindow implements IAppWindow {
 		public void connectionDisconnected() {
 			updateTunnelStatus(false);
 			tunnelConnection = ISocketConnection.NULL;
-			application.getArenaWindow().appendToSystemLog("トンネル通信の接続が終了しました", true);
+			application.getArenaWindow().appendToSystemLog("The tunnel communication connection has ended", true);
 
 			if (roomConnection.isConnected())
 				switch (sessionState) {
@@ -4521,7 +4522,8 @@ public class RoomWindow implements IAppWindow {
 
 		@Override
 		public void errorProtocolNumber(String number) {
-			String message = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number, IProtocol.NUMBER);
+			String message = String.format("\r\n"
+					+ "Cannot connect because the protocol number does not match the server. Server:%s Client:%s", number, IProtocol.NUMBER);
 			application.getArenaWindow().appendToSystemLog(message, true);
 		}
 	}
@@ -4530,14 +4532,14 @@ public class RoomWindow implements IAppWindow {
 		widgets.wlanAdapterListCombo.removeAll();
 		if (!currentWlanLibrary.isReady()) {
 			widgets.wlanPspCommunicationButton.setEnabled(false);
-			widgets.wlanAdapterListCombo.add("エラー: SSID機能の設定かインストールを見直してください");
+			widgets.wlanAdapterListCombo.add("Error: Review SSID feature settings or installation");
 			widgets.wlanAdapterListCombo.select(0);
 			widgets.wlanAdapterListCombo.setEnabled(false);
 			return;
 		}
 
 		widgets.wlanAdapterListCombo.setEnabled(true);
-		widgets.wlanAdapterListCombo.add("選択されていません");
+		widgets.wlanAdapterListCombo.add("Not selected");
 		try {
 			wlanAdapterList.clear();
 			currentWlanLibrary.findDevices(wlanAdapterList);
@@ -4572,7 +4574,7 @@ public class RoomWindow implements IAppWindow {
 				if (Utility.isEmpty(name)) {
 					name = device.getName();
 					name = name.replace("(Microsoft's Packet Scheduler)", "");
-					name = name.replace(" - パケット スケジューラ ミニポート", "");
+					name = name.replace(" - Packet scheduler miniport", "");
 					name = name.replaceAll(" {2,}", " ").trim();
 
 					nicSection.set(macAddress, name);
@@ -4598,7 +4600,7 @@ public class RoomWindow implements IAppWindow {
 			sb.append('-');
 
 		widgets.wlanAdapterListCombo.add(sb.toString());
-		widgets.wlanAdapterListCombo.add("アダプターリストを再読み込み");
+		widgets.wlanAdapterListCombo.add("Reload the adapter list");
 
 		widgets.wlanAdapterListCombo.select(lastUsedIndex);
 		widgets.wlanPspCommunicationButton.setEnabled(lastUsedIndex != 0);
@@ -4671,7 +4673,7 @@ public class RoomWindow implements IAppWindow {
 				srcStats = new TraficStatistics(srcMac, true);
 				traficStatsMap.put(srcMac, srcStats);
 			} else if (!srcStats.isMine) {
-				// サーバーから送られてきた他PSPからのパケットの再キャプチャなのでスルー
+				// Through because it is a recapture of packets sent from other PSPs sent from the server
 				return;
 			}
 
@@ -4680,7 +4682,7 @@ public class RoomWindow implements IAppWindow {
 				traficStatsMap.put(destMac, destStats);
 
 			} else if (destStats.isMine) {
-				// 手元のPSP同士の通信なのでスルー
+				// Through communication between PSPs at hand
 				return;
 			}
 		}

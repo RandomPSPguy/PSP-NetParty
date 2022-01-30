@@ -36,8 +36,8 @@ import pspnetparty.lib.socket.IProtocol;
 
 public class LobbyServer {
 	public static void main(String[] args) throws Exception {
-		System.out.printf("%s ロビーサーバー  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
-		System.out.println("プロトコル: " + IProtocol.NUMBER);
+		System.out.printf("%s lobby server  version %s\n", AppConstants.APP_NAME, AppConstants.VERSION);
+		System.out.println("protocol: " + IProtocol.NUMBER);
 
 		String iniFileName = "LobbyServer.ini";
 		switch (args.length) {
@@ -45,20 +45,20 @@ public class LobbyServer {
 			iniFileName = args[0];
 			break;
 		}
-		System.out.println("設定INIファイル名: " + iniFileName);
+		System.out.println("Settings INI file name: " + iniFileName);
 
 		IniFile ini = new IniFile(iniFileName);
 		IniSection settings = ini.getSection(IniConstants.SECTION_SETTINGS);
 
 		final int port = settings.get(IniConstants.PORT, 60000);
 		if (port < 1 || port > 65535) {
-			System.out.println("ポート番号が不正です: " + port);
+			System.out.println("Incorrect port number: " + port);
 			return;
 		}
-		System.out.println("ポート: " + port);
+		System.out.println("port: " + port);
 
 		final String loginMessageFile = settings.get(IniConstants.LOGIN_MESSAGE_FILE, "");
-		System.out.println("ログインメッセージファイル : " + loginMessageFile);
+		System.out.println("Login message file: " + loginMessageFile);
 
 		ini.saveToIni();
 
@@ -75,21 +75,21 @@ public class LobbyServer {
 		handlers.put("help", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("shutdown\n\tサーバーを終了させる");
-				System.out.println("status\n\t現在のサーバーの状態を表示");
-				System.out.println("notify メッセージ\n\t全員にメッセージを告知");
-				System.out.println("portal list\n\t登録中のポータル一覧");
-				System.out.println("portal accept\n\tポータル登録の受付開始");
-				System.out.println("portal reject\n\tポータル登録の受付停止");
+				System.out.println("shutdown\n\tShut down the server");
+				System.out.println("status\n\tShow current server status ");
+				System.out.println("notify message\n\tAnnounce a message to everyone");
+				System.out.println("portal list\n\tList of registered portals");
+				System.out.println("portal accept\n\tStart accepting portal registration");
+				System.out.println("portal reject\n\tStop accepting portal registration");
 			}
 		});
 		handlers.put("status", new ICommandHandler() {
 			@Override
 			public void process(String argument) {
-				System.out.println("ポート: " + port);
-				System.out.println("ユーザー数: " + engine.getCurrentPlayers());
-				System.out.println("ログインメッセージファイル : " + loginMessageFile);
-				System.out.println("ポータル登録: " + (engine.isAcceptingPortal() ? "受付中" : "停止中"));
+				System.out.println("port: " + port);
+				System.out.println("# of users: " + engine.getCurrentPlayers());
+				System.out.println("Login message file : " + loginMessageFile);
+				System.out.println("Portal registration: " + (engine.isAcceptingPortal() ? "Accepting" : "stopping"));
 			}
 		});
 		handlers.put("notify", new ICommandHandler() {
@@ -99,7 +99,7 @@ public class LobbyServer {
 					return;
 
 				engine.notifyAllUsers(message);
-				System.out.println("メッセージを告知しました : " + message);
+				System.out.println("Announced the message : " + message);
 			}
 		});
 		handlers.put("portal", new ICommandHandler() {
@@ -107,16 +107,16 @@ public class LobbyServer {
 			public void process(String argument) {
 				String action = argument.trim();
 				if ("list".equalsIgnoreCase(action)) {
-					System.out.println("[登録中のポータルサーバーの一覧]");
+					System.out.println("[List of registered portal servers]");
 					for (InetSocketAddress address : engine.getPortalAddresses()) {
 						System.out.println(address.getAddress().getHostAddress() + ":" + address.getPort());
 					}
 				} else if ("accept".equalsIgnoreCase(action)) {
 					engine.setAcceptingPortal(true);
-					System.out.println("ポータル接続の受付を開始しました");
+					System.out.println("We have started accepting portal connections");
 				} else if ("reject".equalsIgnoreCase(action)) {
 					engine.setAcceptingPortal(false);
-					System.out.println("ポータル接続の受付を停止しました");
+					System.out.println("We have stopped accepting portal connections");
 				}
 			}
 		});

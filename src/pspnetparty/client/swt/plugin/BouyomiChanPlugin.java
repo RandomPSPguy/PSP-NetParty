@@ -116,7 +116,7 @@ public class BouyomiChanPlugin implements IPlugin, IPreferenceNodeProvider {
 				iniSection.set(INI_USE, false);
 
 				errorCount = 0;
-				application.getArenaWindow().appendToSystemLog("棒読みちゃんに接続できませんでした。設定を見直してください。", true);
+				application.getArenaWindow().appendToSystemLog("I couldn't connect to AquesTalk. Please review the settings.", true);
 			}
 		}
 	}
@@ -209,7 +209,7 @@ public class BouyomiChanPlugin implements IPlugin, IPreferenceNodeProvider {
 		private Button readPrivateChatCheck;
 
 		public BouyomiChanPage() {
-			super("棒読みちゃん");
+			super("Stick reading");
 			noDefaultAndApplyButton();
 		}
 
@@ -227,12 +227,12 @@ public class BouyomiChanPlugin implements IPlugin, IPreferenceNodeProvider {
 			container.setLayout(gridLayout);
 
 			useCheckButton = new Button(container, SWT.CHECK | SWT.FLAT);
-			useCheckButton.setText("棒読みちゃんを使用する ※棒読みちゃん（フリーソフト）が別途必要になります");
+			useCheckButton.setText("Use Sticky Reader * Sticky Reader (free software) is required separately.");
 			useCheckButton.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1));
 			useCheckButton.setSelection(use);
 
 			Label addressLabel = new Label(container, SWT.NONE);
-			addressLabel.setText("アドレス");
+			addressLabel.setText("address");
 			addressLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 
 			addressText = new Text(container, SWT.BORDER | SWT.SINGLE);
@@ -242,27 +242,27 @@ public class BouyomiChanPlugin implements IPlugin, IPreferenceNodeProvider {
 			addressText.setEnabled(use);
 
 			readMyChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readMyChatCheck.setText("自分のチャットを読み上げる");
+			readMyChatCheck.setText("Read your chat aloud");
 			readMyChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readMyChatCheck.setSelection(readMyChat);
 
 			readRoomChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readRoomChatCheck.setText("プレイルームのチャットを読み上げる");
+			readRoomChatCheck.setText("Read aloud the chat in the playroom");
 			readRoomChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readRoomChatCheck.setSelection(readRoomChat);
 
 			readLobbyChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readLobbyChatCheck.setText("ロビー全体のチャットを読み上げる");
+			readLobbyChatCheck.setText("Read aloud the chat throughout the lobby");
 			readLobbyChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readLobbyChatCheck.setSelection(readLobbyChat);
 
 			readCircleChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readCircleChatCheck.setText("サークルのチャットを読み上げる");
+			readCircleChatCheck.setText("Read the circle chat aloud");
 			readCircleChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readCircleChatCheck.setSelection(readCircleChat);
 
 			readPrivateChatCheck = new Button(container, SWT.CHECK | SWT.FLAT);
-			readPrivateChatCheck.setText("プライベートメッセージを読み上げる");
+			readPrivateChatCheck.setText("Read aloud a private message");
 			readPrivateChatCheck.setLayoutData(new GridData(SWT.LEAD, SWT.CENTER, false, false, 2, 1));
 			readPrivateChatCheck.setSelection(readPrivateChat);
 
@@ -316,7 +316,7 @@ public class BouyomiChanPlugin implements IPlugin, IPreferenceNodeProvider {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String message = "棒読みちゃんてすと";
+		String message = "Stick reading";
 		InetSocketAddress address = new InetSocketAddress(50001);
 
 		BouyomiChanPlugin bc = new BouyomiChanPlugin();

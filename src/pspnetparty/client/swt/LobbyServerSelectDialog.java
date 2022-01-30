@@ -52,7 +52,7 @@ public class LobbyServerSelectDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("ロビーサーバー選択");
+		newShell.setText("Lobby server selection");
 	}
 
 	@Override
@@ -67,13 +67,13 @@ public class LobbyServerSelectDialog extends Dialog {
 		table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
 		TableColumn titleColumn = new TableColumn(table, SWT.LEFT);
-		titleColumn.setText("ロビー名");
+		titleColumn.setText("Lobby name");
 
 		TableColumn userCountColumn = new TableColumn(table, SWT.RIGHT);
-		userCountColumn.setText("ユーザー数");
+		userCountColumn.setText("Number of users");
 
 		TableColumn addressColumn = new TableColumn(table, SWT.LEFT);
-		addressColumn.setText("サーバー");
+		addressColumn.setText("server");
 
 		viewer.setContentProvider(new ArrayContentProvider());
 		viewer.setLabelProvider(LobbyServerInfo.LABEL_PROVIDER);
@@ -112,7 +112,7 @@ public class LobbyServerSelectDialog extends Dialog {
 		Control control = super.createButtonBar(parent);
 
 		Button ok = getButton(OK);
-		ok.setText("ログイン");
+		ok.setText("Login");
 
 		return control;
 	}

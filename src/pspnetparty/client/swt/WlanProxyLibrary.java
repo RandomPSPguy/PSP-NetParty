@@ -86,7 +86,7 @@ public class WlanProxyLibrary implements WlanLibrary {
 
 		@Override
 		public String getName() {
-			return "Proxyに接続";
+			return "Connect to Proxy";
 		}
 
 		@Override
@@ -206,7 +206,7 @@ public class WlanProxyLibrary implements WlanLibrary {
 
 		@Override
 		public IProtocolDriver createDriver(ISocketConnection connection) {
-			application.getArenaWindow().appendToSystemLog("プロキシに接続しました: " + connection.getRemoteAddress(), true);
+			application.getArenaWindow().appendToSystemLog("Connected to a proxy: " + connection.getRemoteAddress(), true);
 
 			activeConnection = connection;
 
@@ -290,7 +290,7 @@ public class WlanProxyLibrary implements WlanLibrary {
 
 		@Override
 		public void connectionDisconnected() {
-			application.getArenaWindow().appendToSystemLog("プロキシと切断しました: " + connection.getRemoteAddress(), true);
+			application.getArenaWindow().appendToSystemLog("Disconnected from the proxy: " + connection.getRemoteAddress(), true);
 		}
 
 		@Override

@@ -141,7 +141,7 @@ public class LogViewer {
 		logWidget.setMenu(menu);
 
 		MenuItem menuCopyLog = new MenuItem(menu, SWT.PUSH);
-		menuCopyLog.setText("ログをコピー");
+		menuCopyLog.setText("Copy log");
 		menuCopyLog.addListener(SWT.Selection, new Listener() {
 			private Date date = new Date();
 
@@ -169,7 +169,7 @@ public class LogViewer {
 		new MenuItem(menu, SWT.SEPARATOR);
 
 		MenuItem menuClearLog = new MenuItem(menu, SWT.PUSH);
-		menuClearLog.setText("ログをクリア");
+		menuClearLog.setText("Clear the log");
 		menuClearLog.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {

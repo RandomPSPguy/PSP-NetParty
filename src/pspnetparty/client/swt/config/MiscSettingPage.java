@@ -63,7 +63,7 @@ public class MiscSettingPage extends PreferencePage {
 	private Button tunnelTransportUdp;
 
 	public MiscSettingPage(IniSettings settings) {
-		super("各種設定");
+		super("various settings");
 		this.settings = settings;
 
 		noDefaultAndApplyButton();
@@ -84,7 +84,7 @@ public class MiscSettingPage extends PreferencePage {
 		configContainer.setLayout(gridLayout);
 
 		Group startupWindowGroup = new Group(configContainer, SWT.SHADOW_IN);
-		startupWindowGroup.setText("起動ウインドウ");
+		startupWindowGroup.setText("Startup window");
 		startupWindowGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(2, false);
 		gridLayout.horizontalSpacing = 5;
@@ -94,13 +94,13 @@ public class MiscSettingPage extends PreferencePage {
 		startupWindowGroup.setLayout(gridLayout);
 
 		startupWindowArena = new Button(startupWindowGroup, SWT.RADIO | SWT.FLAT);
-		startupWindowArena.setText("アリーナ");
+		startupWindowArena.setText("Arena");
 
 		startupWindowRoom = new Button(startupWindowGroup, SWT.RADIO | SWT.FLAT);
-		startupWindowRoom.setText("ルーム");
+		startupWindowRoom.setText("Room");
 
 		Group arenaAutoLoginGroup = new Group(configContainer, SWT.SHADOW_IN);
-		arenaAutoLoginGroup.setText("アリーナウインドウを開く時に自動で接続する");
+		arenaAutoLoginGroup.setText("Connect automatically when opening the arena window");
 		arenaAutoLoginGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(2, false);
 		gridLayout.horizontalSpacing = 5;
@@ -110,33 +110,33 @@ public class MiscSettingPage extends PreferencePage {
 		arenaAutoLoginGroup.setLayout(gridLayout);
 
 		arenaAutoLoginRoomList = new Button(arenaAutoLoginGroup, SWT.CHECK | SWT.FLAT);
-		arenaAutoLoginRoomList.setText("部屋リスト");
+		arenaAutoLoginRoomList.setText("Room list");
 
 		arenaAutoLoginLobby = new Button(arenaAutoLoginGroup, SWT.CHECK | SWT.FLAT);
-		arenaAutoLoginLobby.setText("ロビー");
+		arenaAutoLoginLobby.setText("lobby");
 
 		appCloseConfirmCheck = new Button(configContainer, SWT.CHECK | SWT.FLAT);
-		appCloseConfirmCheck.setText("アプリケーションを閉じる時に確認する");
+		appCloseConfirmCheck.setText("Check when closing the application");
 
 		Group configTaskTrayBalloonGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configTaskTrayBalloonGroup.setText("タスクトレイからバルーンで通知");
+		configTaskTrayBalloonGroup.setText("Notify with a balloon from the task tray");
 		configTaskTrayBalloonGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		configTaskTrayBalloonGroup.setLayout(new GridLayout(1, false));
 
 		balloonNotifyRoomCheck = new Button(configTaskTrayBalloonGroup, SWT.CHECK | SWT.FLAT);
-		balloonNotifyRoomCheck.setText("プレイルームのログメッセージ");
+		balloonNotifyRoomCheck.setText("Playroom log message");
 
 		balloonNotifyLobbyCheck = new Button(configTaskTrayBalloonGroup, SWT.CHECK | SWT.FLAT);
-		balloonNotifyLobbyCheck.setText("ロビーのログメッセージ");
+		balloonNotifyLobbyCheck.setText("Lobby log message");
 
 		balloonLobbyEnterExitCheck = new Button(configTaskTrayBalloonGroup, SWT.CHECK | SWT.FLAT);
-		balloonLobbyEnterExitCheck.setText("ロビー全体の入退室ログも通知");
+		balloonLobbyEnterExitCheck.setText("Notification of entry / exit logs for the entire lobby");
 		gridData = new GridData(SWT.LEFT, SWT.CENTER, true, false);
 		gridData.horizontalIndent = 15;
 		balloonLobbyEnterExitCheck.setLayoutData(gridData);
 
 		Group ssidGroup = new Group(configContainer, SWT.SHADOW_IN);
-		ssidGroup.setText("SSID機能");
+		ssidGroup.setText("SSID function");
 		ssidGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(3, false);
 		gridLayout.horizontalSpacing = 5;
@@ -154,17 +154,17 @@ public class MiscSettingPage extends PreferencePage {
 		libraryJnetPcap.setEnabled(JnetPcapWlanDevice.LIBRARY.isReady());
 
 		libraryProxy = new Button(ssidGroup, SWT.RADIO);
-		libraryProxy.setText("プロキシ (特殊なモード)");
+		libraryProxy.setText("Proxy (special mode)");
 
 		ssidAutoScan = new Button(ssidGroup, SWT.CHECK | SWT.FLAT);
-		ssidAutoScan.setText("SSIDスキャンを自動的に開始する");
+		ssidAutoScan.setText("Automatically start SSID scan");
 		gridData = new GridData();
 		gridData.horizontalSpan = 3;
 		// gridData.verticalIndent = 6;
 		ssidAutoScan.setLayoutData(gridData);
 
 		Group configTunnelGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configTunnelGroup.setText("トンネル通信");
+		configTunnelGroup.setText("Tunnel communication");
 		configTunnelGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(3, false);
 		gridLayout.horizontalSpacing = 5;
@@ -174,7 +174,7 @@ public class MiscSettingPage extends PreferencePage {
 		configTunnelGroup.setLayout(gridLayout);
 
 		Label tunnelTransportLayer = new Label(configTunnelGroup, SWT.NONE);
-		tunnelTransportLayer.setText("トランスポート層: ");
+		tunnelTransportLayer.setText("Transport layer: ");
 
 		tunnelTransportTcp = new Button(configTunnelGroup, SWT.RADIO | SWT.FLAT);
 		tunnelTransportTcp.setText("TCP");
@@ -183,7 +183,7 @@ public class MiscSettingPage extends PreferencePage {
 		tunnelTransportUdp.setText("UDP");
 
 		Group configPortalServerGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configPortalServerGroup.setText("ポータルサーバー");
+		configPortalServerGroup.setText("Portal Server");
 		configPortalServerGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(2, false);
 		gridLayout.horizontalSpacing = 5;
@@ -193,11 +193,11 @@ public class MiscSettingPage extends PreferencePage {
 		configPortalServerGroup.setLayout(gridLayout);
 
 		privatePortalServerUseCheck = new Button(configPortalServerGroup, SWT.CHECK | SWT.FLAT);
-		privatePortalServerUseCheck.setText("ポータルサーバーを指定する (指定しなければ公開のポータルサーバーを使います)");
+		privatePortalServerUseCheck.setText("Specify a portal server (otherwise use a public portal server)");
 		privatePortalServerUseCheck.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
 
 		Label configPortalServerAddressLabel = new Label(configPortalServerGroup, SWT.NONE);
-		configPortalServerAddressLabel.setText("サーバーアドレス");
+		configPortalServerAddressLabel.setText("Server address");
 		configPortalServerAddressLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 
 		privatePortalServerAddress = new Text(configPortalServerGroup, SWT.BORDER | SWT.SINGLE);
@@ -205,7 +205,7 @@ public class MiscSettingPage extends PreferencePage {
 		privatePortalServerAddress.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		Group configMyRoomGroup = new Group(configContainer, SWT.SHADOW_IN);
-		configMyRoomGroup.setText("マイルーム");
+		configMyRoomGroup.setText("my room");
 		configMyRoomGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 		gridLayout = new GridLayout(1, false);
 		gridLayout.horizontalSpacing = 0;
@@ -215,7 +215,7 @@ public class MiscSettingPage extends PreferencePage {
 		configMyRoomGroup.setLayout(gridLayout);
 
 		myRoomAllowEmptyMasterNameCheck = new Button(configMyRoomGroup, SWT.CHECK | SWT.FLAT);
-		myRoomAllowEmptyMasterNameCheck.setText("アドレスの部屋主名を省略でもログインできるようにする");
+		myRoomAllowEmptyMasterNameCheck.setText("Allows you to log in even if you omit the room owner name of the address");
 		myRoomAllowEmptyMasterNameCheck.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false));
 
 		if (settings.isStartupWindowArena())

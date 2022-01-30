@@ -84,13 +84,13 @@ public class TestJfacePreference {
 			@Override
 			protected void configureShell(Shell newShell) {
 				super.configureShell(newShell);
-				newShell.setText("設定");
+				newShell.setText("Configuration");
 			}
 
 			@Override
 			protected void initializeBounds() {
 				super.initializeBounds();
-				getButton(CANCEL).setText("キャンセル");
+				getButton(CANCEL).setText("Cancel");
 			}
 		};
 		//dialog.setPreferenceStore(store);
@@ -137,23 +137,23 @@ class TestPage extends FieldEditorPreferencePage {
 	@Override
 	protected void createFieldEditors() {
 		// Add a boolean field
-		BooleanFieldEditor bfe = new BooleanFieldEditor("myBoolean", "確認する", getFieldEditorParent());
+		BooleanFieldEditor bfe = new BooleanFieldEditor("myBoolean", "Confirm", getFieldEditorParent());
 		addField(bfe);
 
 		// Add a color field
-		ColorFieldEditor cfe = new ColorFieldEditor("myColor", "全体の色:", getFieldEditorParent());
+		ColorFieldEditor cfe = new ColorFieldEditor("myColor", "Overall color:", getFieldEditorParent());
 		addField(cfe);
 
 		// Add a directory field
-		DirectoryFieldEditor dfe = new DirectoryFieldEditor("myDirectory", "フォルダ:", getFieldEditorParent());
+		DirectoryFieldEditor dfe = new DirectoryFieldEditor("myDirectory", "folder:", getFieldEditorParent());
 		addField(dfe);
 
 		// Add a file field
-		FileFieldEditor ffe = new FileFieldEditor("myFile", "ファイル:", getFieldEditorParent());
+		FileFieldEditor ffe = new FileFieldEditor("myFile", "File:", getFieldEditorParent());
 		addField(ffe);
 
 		// Add a font field
-		FontFieldEditor fontFe = new FontFieldEditor("myFont", "全体のフォント:", getFieldEditorParent());
+		FontFieldEditor fontFe = new FontFieldEditor("myFont", "Whole font:", getFieldEditorParent());
 		addField(fontFe);
 
 		// Add a radio group field
@@ -170,8 +170,8 @@ class TestPage extends FieldEditorPreferencePage {
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		getApplyButton().setText("適用する");
-		getDefaultsButton().setText("デフォルトに戻す");
+		getApplyButton().setText("Apply");
+		getDefaultsButton().setText("Return to default");
 	}
 
 	private Button revertButton;
@@ -273,7 +273,7 @@ class TestPage2 extends PreferencePage {
 	private void checkValid() {
 		setValid(!checkOne.getSelection());
 		if (checkOne.getSelection()) {
-			setErrorMessage("エラーがあります");
+			setErrorMessage("There is an error");
 			setDescription("foo Bar");
 		} else {
 			setErrorMessage(null);

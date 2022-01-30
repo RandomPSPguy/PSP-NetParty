@@ -62,13 +62,13 @@ public class LobbyUserUtils {
 			case 1:
 				switch (user.getState()) {
 				case LOGIN:
-					return "参加中";
+					return "participating";
 				case AFK:
-					return "離席中";
+					return "Away in";
 				case PLAYING:
-					return "プレイ中";
+					return "In play";
 				case INACTIVE:
-					return "非アクティブ";
+					return "Inactive";
 				default:
 					return "";
 				}

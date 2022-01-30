@@ -53,7 +53,7 @@ public class ChatTextPresetsPage extends PreferencePage {
 	private Button enableKeyInput;
 
 	public ChatTextPresetsPage(IniSettings settings, IniChatTextPresets presets) {
-		super("チャット定型文");
+		super("Chat fixed phrase");
 		this.settings = settings;
 		chatTextPresets = presets;
 
@@ -85,11 +85,11 @@ public class ChatTextPresetsPage extends PreferencePage {
 		showButtonContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		showPresetButtons = new Button(showButtonContainer, SWT.CHECK | SWT.FLAT);
-		showPresetButtons.setText("定型文ボタンを表示する");
+		showPresetButtons.setText("Display a fixed phrase button");
 		showPresetButtons.setSelection(settings.isShowChatPresetButtons());
 
 		Label presetButtonMaxLengthLabel1 = new Label(showButtonContainer, SWT.NONE);
-		presetButtonMaxLengthLabel1.setText("ボタンの最大文字数");
+		presetButtonMaxLengthLabel1.setText("Maximum number of characters for a button");
 		gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false);
 		gridData.horizontalIndent = 30;
 		presetButtonMaxLengthLabel1.setLayoutData(gridData);
@@ -100,7 +100,7 @@ public class ChatTextPresetsPage extends PreferencePage {
 		presetButtonMaxLength.setEnabled(settings.isShowChatPresetButtons());
 
 		Label presetButtonMaxLengthLabel2 = new Label(showButtonContainer, SWT.NONE);
-		presetButtonMaxLengthLabel2.setText("文字");
+		presetButtonMaxLengthLabel2.setText("word");
 
 		Composite enableKeyInputContainer = new Composite(container, SWT.NONE);
 		gridLayout = new GridLayout(1, false);
@@ -112,7 +112,7 @@ public class ChatTextPresetsPage extends PreferencePage {
 		enableKeyInputContainer.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		enableKeyInput = new Button(enableKeyInputContainer, SWT.CHECK | SWT.FLAT);
-		enableKeyInput.setText("キーボードでの入力を有効にする");
+		enableKeyInput.setText("Enable keyboard input");
 		enableKeyInput.setSelection(settings.isChatPresetEnableKeyInput());
 
 		Composite presetContainer = new Composite(container, SWT.NONE);

@@ -78,7 +78,7 @@ public class UserProfileWindow {
 
 		shell = new Shell(parentShell, SWT.SHELL_TRIM | SWT.TOOL);
 
-		shell.setText("ユーザープロフィール");
+		shell.setText("User profile");
 		try {
 			shell.setImages(application.getShellImages());
 		} catch (RuntimeException e) {
@@ -132,7 +132,7 @@ public class UserProfileWindow {
 		circleLabelSuffix = new Label(circleContainer, SWT.NONE);
 
 		Label profileLabel = new Label(shell, SWT.NONE);
-		profileLabel.setText("プロフィール");
+		profileLabel.setText("profile");
 		gridData = new GridData(SWT.LEFT, SWT.CENTER, false, false);
 		gridData.verticalIndent = 1;
 		gridData.horizontalIndent = 2;
@@ -161,7 +161,7 @@ public class UserProfileWindow {
 		});
 
 		privateMessage = new Button(controlContainer, SWT.PUSH);
-		privateMessage.setText("プライベートメッセージを送る");
+		privateMessage.setText("Send a private message");
 		privateMessage.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
@@ -172,7 +172,7 @@ public class UserProfileWindow {
 		});
 
 		closeWindow = new Button(controlContainer, SWT.PUSH);
-		closeWindow.setText("閉じる");
+		closeWindow.setText("close up");
 		gridData = new GridData(SWT.RIGHT, SWT.CENTER, true, false);
 		gridData.widthHint = 80;
 		closeWindow.setLayoutData(gridData);
@@ -327,7 +327,7 @@ public class UserProfileWindow {
 			circleLabel.setText("");
 			circleLabelSuffix.setText("");
 		} else {
-			circleLabel.setText("所属サークル");
+			circleLabel.setText("Affiliation circle");
 
 			Set<String> myCircles = myself.getCircles();
 			for (String circle : user.getCircles()) {
@@ -337,7 +337,7 @@ public class UserProfileWindow {
 				button.addListener(SWT.Selection, circleButtonListener);
 				circleList.add(button);
 			}
-			circleLabelSuffix.setText(circleList.isEmpty() ? ":  なし" : "");
+			circleLabelSuffix.setText(circleList.isEmpty() ? ":  none" : "");
 		}
 
 		shell.layout(true, true);

@@ -117,7 +117,9 @@ public class ArenaWindow implements IAppWindow {
 		OFFLINE, CONNECTING, LOGIN,
 	}
 
-	private static final String[] LOBBY_USER_STATES = new String[] { "参加中", "離席中", "プレイ中", "非アクティブ" };
+	private static final String[] LOBBY_USER_STATES = new String[] { "participating", "\r\n"
+			+ "Away in", "In play", "\r\n"
+					+ "Inactive" };
 
 	private final long lobbyInactivityInterval = 30 * 60 * 1000;
 
@@ -206,7 +208,7 @@ public class ArenaWindow implements IAppWindow {
 		// ColorRegistry colorRegistry = application.getColorRegistry();
 
 		shell = new Shell(SWT.SHELL_TRIM);
-		shell.setText("アリーナ - " + AppConstants.APP_NAME);
+		shell.setText("Arena - " + AppConstants.APP_NAME);
 
 		try {
 			shell.setImages(application.getShellImages());
@@ -273,19 +275,19 @@ public class ArenaWindow implements IAppWindow {
 		roomListStatusBarContainer.setLayout(gridLayout);
 
 		roomListServerAddressLabel = new Label(roomListStatusBarContainer, SWT.NONE);
-		roomListServerAddressLabel.setText("サーバー: ");
+		roomListServerAddressLabel.setText("server: ");
 
 		gridData = new GridData(SWT.CENTER, SWT.CENTER, false, false);
 		gridData.heightHint = 15;
 		new Label(roomListStatusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
 		roomListServerStatusLabel = new Label(roomListStatusBarContainer, SWT.NONE);
-		roomListServerStatusLabel.setText("ログインしていません");
+		roomListServerStatusLabel.setText("You are not logged in");
 
 		new Label(roomListStatusBarContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
 		roomSearchResultLabel = new Label(roomListStatusBarContainer, SWT.NONE);
-		roomSearchResultLabel.setText("検索結果: なし");
+		roomSearchResultLabel.setText("Search Results: None");
 		roomSearchResultLabel.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false));
 
 		Label roomSearchServerAddressLabel = new Label(roomSearchFormControlContainer, SWT.NONE);
@@ -293,20 +295,20 @@ public class ArenaWindow implements IAppWindow {
 		application.initControl(roomSearchServerAddressLabel);
 
 		roomSearchFormHasPassword = new Button(roomSearchFormControlContainer, SWT.CHECK | SWT.FLAT);
-		roomSearchFormHasPassword.setText("鍵付き");
+		roomSearchFormHasPassword.setText("With a key");
 		application.initControl(roomSearchFormHasPassword);
 
 		roomSearchFormOnlyVacant = new Button(roomSearchFormControlContainer, SWT.CHECK | SWT.FLAT);
-		roomSearchFormOnlyVacant.setText("満室非表示");
+		roomSearchFormOnlyVacant.setText("Not fully booked");
 		roomSearchFormOnlyVacant.setSelection(true);
 		application.initControl(roomSearchFormOnlyVacant);
 
 		roomSearchOpenRoomWindow = new Button(roomSearchFormControlContainer, SWT.PUSH);
-		roomSearchOpenRoomWindow.setText("部屋を作成する");
+		roomSearchOpenRoomWindow.setText("Create a room");
 		application.initControl(roomSearchOpenRoomWindow);
 
 		Label roomSearchFormMasterNameLabel = new Label(roomSearchFormContainer, SWT.NONE);
-		roomSearchFormMasterNameLabel.setText("部屋主");
+		roomSearchFormMasterNameLabel.setText("Room owner");
 		gridData = new GridData(SWT.CENTER, SWT.CENTER, false, false);
 		gridData.horizontalIndent = 4;
 		roomSearchFormMasterNameLabel.setLayoutData(gridData);
@@ -317,7 +319,7 @@ public class ArenaWindow implements IAppWindow {
 		application.initControl(roomSearchFormMasterNameCombo);
 
 		Label roomSeaerchFormMasterNameNgLabel = new Label(roomSearchFormContainer, SWT.NONE);
-		roomSeaerchFormMasterNameNgLabel.setText("除外");
+		roomSeaerchFormMasterNameNgLabel.setText("except");
 		roomSeaerchFormMasterNameNgLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 		application.initControl(roomSeaerchFormMasterNameNgLabel);
 
@@ -326,12 +328,12 @@ public class ArenaWindow implements IAppWindow {
 		application.initControl(roomSearchFormMasterNameNgCombo);
 
 		roomSearchFormClear = new Button(roomSearchFormContainer, SWT.PUSH);
-		roomSearchFormClear.setText("クリア");
+		roomSearchFormClear.setText("clear");
 		roomSearchFormClear.setEnabled(false);
 		roomSearchFormClear.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 
 		Label roomSearchFormTitleLabel = new Label(roomSearchFormContainer, SWT.NONE);
-		roomSearchFormTitleLabel.setText("部屋名");
+		roomSearchFormTitleLabel.setText("Room name");
 		gridData = new GridData(SWT.CENTER, SWT.CENTER, false, false);
 		gridData.horizontalIndent = 4;
 		roomSearchFormTitleLabel.setLayoutData(gridData);
@@ -342,7 +344,7 @@ public class ArenaWindow implements IAppWindow {
 		application.initControl(roomSearchFormTitleCombo);
 
 		Label roomSearchFormTitleNgLabel = new Label(roomSearchFormContainer, SWT.NONE);
-		roomSearchFormTitleNgLabel.setText("除外");
+		roomSearchFormTitleNgLabel.setText("except");
 		roomSearchFormTitleNgLabel.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false));
 		application.initControl(roomSearchFormTitleNgLabel);
 
@@ -351,7 +353,7 @@ public class ArenaWindow implements IAppWindow {
 		application.initControl(roomSearchFormTitleNgCombo);
 
 		roomSearchFormFilter = new Button(roomSearchFormContainer, SWT.TOGGLE);
-		roomSearchFormFilter.setText("絞り込む");
+		roomSearchFormFilter.setText("Narrow down");
 		roomSearchFormFilter.setEnabled(false);
 		roomSearchFormFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 
@@ -363,26 +365,26 @@ public class ArenaWindow implements IAppWindow {
 		application.initControl(roomListTable);
 
 		TableColumn columnMasterName = new TableColumn(roomListTable, SWT.LEFT);
-		columnMasterName.setText("部屋主");
+		columnMasterName.setText("Room owner");
 		SwtUtils.installSorter(roomListTableViewer, columnMasterName, PlayRoomUtils.MASTER_NAME_SORTER);
 
 		TableColumn columnTitle = new TableColumn(roomListTable, SWT.LEFT);
-		columnTitle.setText("部屋名");
+		columnTitle.setText("Room name");
 		SwtUtils.installSorter(roomListTableViewer, columnTitle, PlayRoomUtils.TITLE_SORTER);
 
 		TableColumn columnCapacity = new TableColumn(roomListTable, SWT.CENTER);
-		columnCapacity.setText("定員");
+		columnCapacity.setText("Capacity");
 		SwtUtils.installSorter(roomListTableViewer, columnCapacity, PlayRoomUtils.CAPACITY_SORTER);
 
 		TableColumn columnDescription = new TableColumn(roomListTable, SWT.LEFT);
-		columnDescription.setText("部屋の紹介");
+		columnDescription.setText("Room introduction");
 
 		TableColumn columnRoomServer = new TableColumn(roomListTable, SWT.LEFT);
-		columnRoomServer.setText("ルームサーバー");
+		columnRoomServer.setText("Room server");
 		SwtUtils.installSorter(roomListTableViewer, columnRoomServer, PlayRoomUtils.ADDRESS_SORTER);
 
 		TableColumn columnTimestamp = new TableColumn(roomListTable, SWT.CENTER);
-		columnTimestamp.setText("作成日時");
+		columnTimestamp.setText("Creation date and time");
 		SwtUtils.installSorter(roomListTableViewer, columnTimestamp, PlayRoomUtils.TIMESTAMP_SORTER);
 
 		SwtUtils.enableColumnDrag(roomListTable);
@@ -414,13 +416,13 @@ public class ArenaWindow implements IAppWindow {
 		lobbyControlContainer.setLayout(gridLayout);
 
 		lobbyServerLoginButton = new Button(lobbyControlContainer, SWT.TOGGLE);
-		lobbyServerLoginButton.setText("ロビーログイン");
+		lobbyServerLoginButton.setText("Lobby login");
 		gridData = new GridData(SWT.CENTER, SWT.CENTER, false, false);
 		lobbyServerLoginButton.setLayoutData(gridData);
 		application.initControl(lobbyServerLoginButton);
 
 		lobbyServerAddressLabel = new Label(lobbyControlContainer, SWT.NONE);
-		lobbyServerAddressLabel.setText("サーバー: ");
+		lobbyServerAddressLabel.setText("server: ");
 		application.initControl(lobbyServerAddressLabel);
 
 		gridData = new GridData(SWT.CENTER, SWT.CENTER, false, false);
@@ -428,11 +430,11 @@ public class ArenaWindow implements IAppWindow {
 		new Label(lobbyControlContainer, SWT.SEPARATOR | SWT.VERTICAL).setLayoutData(gridData);
 
 		lobbyUserCountLabel = new Label(lobbyControlContainer, SWT.NONE);
-		lobbyUserCountLabel.setText("ユーザー数: ");
+		lobbyUserCountLabel.setText("Number of users: ");
 		application.initControl(lobbyUserCountLabel);
 
 		lobbyUserNameLabel = new Label(lobbyControlContainer, SWT.NONE);
-		lobbyUserNameLabel.setText("ユーザー名");
+		lobbyUserNameLabel.setText("username");
 		lobbyUserNameLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, true, false));
 		application.initControl(lobbyUserNameLabel);
 
@@ -442,11 +444,11 @@ public class ArenaWindow implements IAppWindow {
 		application.initControl(lobbyUserStateCombo);
 
 		lobbyProfileEdit = new Button(lobbyControlContainer, SWT.PUSH);
-		lobbyProfileEdit.setText("プロフィール編集");
+		lobbyProfileEdit.setText("Profile editing");
 		application.initControl(lobbyProfileEdit);
 
 		lobbyCircleAdd = new Button(lobbyControlContainer, SWT.PUSH);
-		lobbyCircleAdd.setText("サークル追加 / 一覧");
+		lobbyCircleAdd.setText("Add circle / list");
 		application.initControl(lobbyCircleAdd);
 
 		lobbyCircleTabFolder = new TabFolder(lobbyContainer, SWT.TOP);
@@ -454,12 +456,14 @@ public class ArenaWindow implements IAppWindow {
 
 		Image lobbyIcon = imageRegistry.get(PlayClient.ICON_TAB_LOBBY);
 		Image lobbyIconNotify = imageRegistry.get(PlayClient.ICON_TAB_LOBBY_NOTIFY);
-		lobbyTab = new LobbyCircleTab("ロビー全体", allLobbyUsers, lobbyIcon, lobbyIconNotify, true);
-		lobbyTab.tabItem.setToolTipText("ログインしている全てのユーザー");
+		lobbyTab = new LobbyCircleTab("The entire lobby", allLobbyUsers, lobbyIcon, lobbyIconNotify, true);
+		lobbyTab.tabItem.setToolTipText("\r\n"
+				+ "All logged in users");
 
 		systemLogTab = new TabItem(lobbyCircleTabFolder, SWT.NONE);
-		systemLogTab.setText("ログ");
-		systemLogTab.setToolTipText("システムログ");
+		systemLogTab.setText("\r\n"
+				+ "log");
+		systemLogTab.setToolTipText("System log");
 		systemLogTab.setImage(imageRegistry.get(PlayClient.ICON_TAB_LOG));
 
 		Composite logContainer = new Composite(lobbyCircleTabFolder, SWT.NONE);
@@ -472,7 +476,8 @@ public class ArenaWindow implements IAppWindow {
 		Image pmIcon = imageRegistry.get(PlayClient.ICON_TAB_PM);
 		Image pmIconNotify = imageRegistry.get(PlayClient.ICON_TAB_PM_NOTIFY);
 		pmTab = new LobbyCircleTab("PM", allLobbyUsers, pmIcon, pmIconNotify, false);
-		pmTab.tabItem.setToolTipText("プライベートメッセージ");
+		pmTab.tabItem.setToolTipText("\r\n"
+				+ "Private message");
 
 		initWidgetListeners();
 
@@ -714,7 +719,8 @@ public class ArenaWindow implements IAppWindow {
 
 		menuLobbyTab = new Menu(shell, SWT.POP_UP);
 		menuItemAddCircle = new MenuItem(menuLobbyTab, SWT.PUSH);
-		menuItemAddCircle.setText("サークル追加");
+		menuItemAddCircle.setText("\r\n"
+				+ "Circle addition");
 		menuItemAddCircle.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event event) {
@@ -1031,7 +1037,7 @@ public class ArenaWindow implements IAppWindow {
 	private void connectToRoomListServer() {
 		InetSocketAddress address = application.getPortalServer();
 		if (address == null) {
-			appendToSystemLog("サーバーリストが設定されていません", true);
+			appendToSystemLog("Server list is not set", true);
 			return;
 		}
 
@@ -1044,7 +1050,7 @@ public class ArenaWindow implements IAppWindow {
 		String[] list = application.getServerRegistry().getPortalServers();
 
 		if (list.length == 0) {
-			ErrorLog log = new ErrorLog("サーバーリストが設定されていません");
+			ErrorLog log = new ErrorLog("Server list is not set");
 			appendToSystemLog(log.getMessage(), true);
 
 			roomListServerLoginButton.setEnabled(true);
@@ -1055,7 +1061,7 @@ public class ArenaWindow implements IAppWindow {
 				String selected = dialog.getSelectedServer();
 				InetSocketAddress address = Utility.parseSocketAddress(selected);
 				if (address == null) {
-					appendToSystemLog("選択されたアドレスにエラーがあります", true);
+					appendToSystemLog("There is an error at the selected address", true);
 				} else {
 					connectToRoomListServer(address);
 				}
@@ -1070,7 +1076,7 @@ public class ArenaWindow implements IAppWindow {
 	private void connectToRoomListServer(final InetSocketAddress address) {
 		roomListSession = RoomListSessionState.CONNECTING;
 
-		roomListServerAddressLabel.setText("サーバー: " + Utility.socketAddressToStringByHostName(address));
+		roomListServerAddressLabel.setText("server: " + Utility.socketAddressToStringByHostName(address));
 
 		roomListMap.clear();
 		roomListTableViewer.refresh();
@@ -1104,7 +1110,8 @@ public class ArenaWindow implements IAppWindow {
 				return;
 			}
 
-			roomListServerLoginButton.setText(loginSuccess ? "リスト閲覧中" : "部屋リスト閲覧");
+			roomListServerLoginButton.setText(loginSuccess ? "\r\n"
+					+ "Browsing the list" : "View room list");
 			roomListServerLoginButton.setSelection(loginSuccess);
 			roomListServerLoginButton.setEnabled(true);
 			roomSearchFormControlContainer.layout();
@@ -1126,7 +1133,7 @@ public class ArenaWindow implements IAppWindow {
 				return;
 			}
 
-			String message = "検索結果: " + roomListTableViewer.getTable().getItemCount() + "件";
+			String message = "search results: " + roomListTableViewer.getTable().getItemCount() + "件";
 			roomSearchResultLabel.setText(message);
 			roomSearchFormControlContainer.layout();
 
@@ -1264,7 +1271,7 @@ public class ArenaWindow implements IAppWindow {
 				}
 
 				updateRoomListServerLoginButton(true);
-				appendToSystemLog("部屋リストの閲覧を開始しました", true);
+				appendToSystemLog("The room list has started to be browsed.", true);
 			} catch (SWTException e) {
 			}
 		}
@@ -1294,7 +1301,7 @@ public class ArenaWindow implements IAppWindow {
 
 		@Override
 		public void errorProtocolNumber(String number) {
-			String error = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number, IProtocol.NUMBER);
+			String error = String.format("Cannot connect because the protocol number does not match the server Server:%s client:%s", number, IProtocol.NUMBER);
 			appendToSystemLog(error, true);
 		}
 
@@ -1313,10 +1320,10 @@ public class ArenaWindow implements IAppWindow {
 
 				switch (roomListSession) {
 				case CONNECTING:
-					appendToSystemLog("部屋リストにアクセスできません", true);
+					appendToSystemLog("Unable to access room list", true);
 					break;
 				case LOGIN:
-					appendToSystemLog("部屋リストの閲覧を終了しました", true);
+					appendToSystemLog("I finished browsing the room list", true);
 					break;
 				}
 
@@ -1326,9 +1333,10 @@ public class ArenaWindow implements IAppWindow {
 				roomListMap.clear();
 				roomListTableViewer.refresh();
 
-				roomListServerAddressLabel.setText("サーバー: ");
-				roomListServerStatusLabel.setText("ログインしていません");
-				roomSearchResultLabel.setText("検索結果: なし");
+				roomListServerAddressLabel.setText("server: ");
+				roomListServerStatusLabel.setText("You are not logged in");
+				roomSearchResultLabel.setText("\r\n"
+						+ "Search Results: None");
 				roomSearchFormControlContainer.layout();
 
 				updateRoomListServerLoginButton(false);
@@ -1473,7 +1481,7 @@ public class ArenaWindow implements IAppWindow {
 						return;
 					}
 
-					String text = String.format("接続ユーザー数: %d", currentUsers);
+					String text = String.format("Number of connected users: %d", currentUsers);
 					roomListServerStatusLabel.setText(text);
 					roomSearchFormControlContainer.layout();
 				} catch (SWTException e) {
@@ -1490,7 +1498,8 @@ public class ArenaWindow implements IAppWindow {
 		roomListHandlers.put(ProtocolConstants.Search.ERROR_LOGIN_BEYOND_CAPACITY, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				appendToSystemLog("サーバーのログイン上限人数に達したのでログインできません", true);
+				appendToSystemLog("\r\n"
+						+ "I cannot log in because I have reached the maximum number of people who can log in to the server.", true);
 				return true;
 			}
 		});
@@ -1575,7 +1584,8 @@ public class ArenaWindow implements IAppWindow {
 			userListContainer.setLayout(gridLayout);
 
 			Label userSearchNameLabel = new Label(userListContainer, SWT.NONE);
-			userSearchNameLabel.setText("ユーザー名");
+			userSearchNameLabel.setText("\r\n"
+					+ "username");
 			userSearchNameLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 			application.initControl(userSearchNameLabel);
 
@@ -1584,7 +1594,7 @@ public class ArenaWindow implements IAppWindow {
 			application.initControl(userSearchName);
 
 			Label userSearchProfileLabel = new Label(userListContainer, SWT.NONE);
-			userSearchProfileLabel.setText("プロフィール");
+			userSearchProfileLabel.setText("profile");
 			userSearchProfileLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 			application.initControl(userSearchProfileLabel);
 
@@ -1593,25 +1603,28 @@ public class ArenaWindow implements IAppWindow {
 			application.initControl(userSearchProfile);
 
 			Label userSearchStateLabel = new Label(userListContainer, SWT.NONE);
-			userSearchStateLabel.setText("状態");
+			userSearchStateLabel.setText("\r\n"
+					+ "situation");
 			userSearchStateLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 			application.initControl(userSearchStateLabel);
 
 			userSearchStateCombo = new Combo(userListContainer, SWT.BORDER | SWT.READ_ONLY);
 			userSearchStateCombo.setItems(LOBBY_USER_STATES);
-			userSearchStateCombo.add("指定なし", 0);
+			userSearchStateCombo.add("\r\n"
+					+ "unspecified", 0);
 			userSearchStateCombo.select(0);
 			userSearchStateCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 			application.initControl(userSearchStateCombo);
 
 			userSearchClear = new Button(userListContainer, SWT.PUSH);
-			userSearchClear.setText("クリア");
+			userSearchClear.setText("\r\n"
+					+ "clear");
 			userSearchClear.setEnabled(false);
 			userSearchClear.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 			application.initControl(userSearchClear);
 
 			userSearchFilter = new Button(userListContainer, SWT.TOGGLE);
-			userSearchFilter.setText("絞り込む");
+			userSearchFilter.setText("Narrow down");
 			userSearchFilter.setEnabled(false);
 			userSearchFilter.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false));
 			application.initControl(userSearchFilter);
@@ -1620,15 +1633,16 @@ public class ArenaWindow implements IAppWindow {
 			Table userListTable = userListTableViewer.getTable();
 
 			TableColumn userSearchTableNameColumn = new TableColumn(userListTable, SWT.LEFT);
-			userSearchTableNameColumn.setText("名前");
+			userSearchTableNameColumn.setText("\r\n"
+					+ "name");
 			SwtUtils.installSorter(userListTableViewer, userSearchTableNameColumn, LobbyUserUtils.NAME_SORTER);
 
 			TableColumn userSearchTableStateColumn = new TableColumn(userListTable, SWT.LEFT);
-			userSearchTableStateColumn.setText("状態");
+			userSearchTableStateColumn.setText("situation");
 			SwtUtils.installSorter(userListTableViewer, userSearchTableStateColumn, LobbyUserUtils.STATE_SORTER);
 
 			TableColumn userSearchTableProfileColumn = new TableColumn(userListTable, SWT.LEFT);
-			userSearchTableProfileColumn.setText("プロフィール");
+			userSearchTableProfileColumn.setText("profile");
 
 			userListTable.setHeaderVisible(true);
 			userListTable.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 4, 1));
@@ -1687,7 +1701,7 @@ public class ArenaWindow implements IAppWindow {
 				application.initChatControl(chatText);
 
 				multilineChatButton = new Button(chatContainer, SWT.PUSH);
-				multilineChatButton.setText("複数行");
+				multilineChatButton.setText("Multiple lines");
 				application.initControl(multilineChatButton);
 
 				chatText.addKeyListener(new KeyListener() {
@@ -1730,7 +1744,7 @@ public class ArenaWindow implements IAppWindow {
 
 			Menu lobbyUserMenu = new Menu(shell, SWT.POP_UP);
 			menuViewProfile = new MenuItem(lobbyUserMenu, SWT.PUSH);
-			menuViewProfile.setText("プロフィール表示");
+			menuViewProfile.setText("Profile view");
 			menuViewProfile.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1744,7 +1758,7 @@ public class ArenaWindow implements IAppWindow {
 			});
 
 			menuPrivateChat = new MenuItem(lobbyUserMenu, SWT.PUSH);
-			menuPrivateChat.setText("プライベートメッセージ");
+			menuPrivateChat.setText("Private message");
 			menuPrivateChat.addListener(SWT.Selection, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -1796,7 +1810,7 @@ public class ArenaWindow implements IAppWindow {
 			userListTableViewer.add(member);
 			userListTableViewer.refresh(member);
 
-			InfoLog log = new InfoLog(member.getName() + " が参加しました");
+			InfoLog log = new InfoLog(member.getName() + " You have to participate");
 			infoLogViewer.appendMessage(log);
 		}
 
@@ -1806,7 +1820,7 @@ public class ArenaWindow implements IAppWindow {
 			userListTableViewer.remove(member);
 			userListTableViewer.refresh(member);
 
-			InfoLog log = new InfoLog(member.getName() + " が退出しました");
+			InfoLog log = new InfoLog(member.getName() + " Has left");
 			infoLogViewer.appendMessage(log);
 		}
 
@@ -1932,7 +1946,7 @@ public class ArenaWindow implements IAppWindow {
 	private void selectLobbyServer() {
 		lobbyServerLoginButton.setEnabled(false);
 
-		TextDialog dialog = new TextDialog(shell, "ロビーサーバーに接続します", "サーバーアドレスを入力してください", "接続する", 200, SWT.NONE);
+		TextDialog dialog = new TextDialog(shell, "Connect to the lobby server", "enter the server address", "Connecting", 200, SWT.NONE);
 		switch (dialog.open()) {
 		case IDialogConstants.OK_ID:
 			String address = dialog.getUserInput();
@@ -2020,7 +2034,7 @@ public class ArenaWindow implements IAppWindow {
 
 			setLobbyLoginUserName(myself.getName());
 
-			lobbyServerLoginButton.setText("ログイン中");
+			lobbyServerLoginButton.setText("Login");
 			lobbyServerLoginButton.setEnabled(true);
 			lobbyServerLoginButton.getParent().layout();
 
@@ -2046,7 +2060,7 @@ public class ArenaWindow implements IAppWindow {
 				tab.chatText.setFocus();
 			}
 
-			ServerLog log = new ServerLog(myself.getName() + " としてログインしました");
+			ServerLog log = new ServerLog(myself.getName() + " I logged in as");
 			lobbyTab.infoLogViewer.appendMessage(log);
 
 			updateLobbyUserCount();
@@ -2082,7 +2096,7 @@ public class ArenaWindow implements IAppWindow {
 	}
 
 	private void updateLobbyUserCount() {
-		lobbyUserCountLabel.setText("ユーザー数: " + allLobbyUsers.size());
+		lobbyUserCountLabel.setText("# of users: " + allLobbyUsers.size());
 		lobbyUserCountLabel.getParent().layout();
 	}
 
@@ -2157,7 +2171,7 @@ public class ArenaWindow implements IAppWindow {
 
 			IniSettings settings = application.getSettings();
 			if (!name.equals(lobbyUserNameLabel.getText())) {
-				InfoLog log = new InfoLog(name + " がログインしました");
+				InfoLog log = new InfoLog(name + " Has logged in");
 				lobbyTab.infoLogViewer.appendMessage(log);
 
 				if (!isActiveWindow && settings.isBallonNotifyLobby() && settings.isBalloonLobbyEnterExit())
@@ -2201,7 +2215,7 @@ public class ArenaWindow implements IAppWindow {
 			}
 
 			IniSettings settings = application.getSettings();
-			InfoLog log = new InfoLog(name + " がログアウトしました");
+			InfoLog log = new InfoLog(name + " Logged out");
 			lobbyTab.infoLogViewer.appendMessage(log);
 
 			if (!isActiveWindow && settings.isBallonNotifyLobby() && settings.isBalloonLobbyEnterExit())
@@ -2362,7 +2376,7 @@ public class ArenaWindow implements IAppWindow {
 		@Override
 		protected void configureShell(Shell newShell) {
 			super.configureShell(newShell);
-			newShell.setText("サークル追加 / 一覧");
+			newShell.setText("Add circle / list");
 		}
 
 		@Override
@@ -2376,7 +2390,7 @@ public class ArenaWindow implements IAppWindow {
 			composite.setLayoutData(gridData);
 
 			Label label = new Label(composite, SWT.NONE);
-			label.setText("サークル名を入力するか、一覧から選択してください");
+			label.setText("Enter the circle name or select from the list");
 
 			final Text text = new Text(composite, SWT.BORDER | SWT.SINGLE);
 			gridData = new GridData(GridData.FILL, GridData.CENTER, true, false);
@@ -2387,11 +2401,11 @@ public class ArenaWindow implements IAppWindow {
 			circleTable.setHeaderVisible(true);
 
 			TableColumn nameColumn = new TableColumn(circleTable, SWT.LEFT);
-			nameColumn.setText("サークル名");
+			nameColumn.setText("Circle name");
 			nameColumn.setWidth(200);
 
 			TableColumn countColumn = new TableColumn(circleTable, SWT.RIGHT);
-			countColumn.setText("所属人数");
+			countColumn.setText("Number of members");
 			countColumn.setWidth(60);
 
 			gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
@@ -2422,7 +2436,7 @@ public class ArenaWindow implements IAppWindow {
 					String name = text.getText();
 					if (myCircleTabs.containsKey(name)) {
 						getButton(OK).setEnabled(false);
-						errorLabel.setText("すでに所属しているサークルです");
+						errorLabel.setText("It is a circle that I already belong to");
 					} else {
 						getButton(OK).setEnabled(!Utility.isEmpty(name));
 						errorLabel.setText("");
@@ -2442,7 +2456,7 @@ public class ArenaWindow implements IAppWindow {
 						return;
 					if (myCircleTabs.containsKey(entry.getKey())) {
 						getButton(OK).setEnabled(false);
-						errorLabel.setText("すでに所属しているサークルです");
+						errorLabel.setText("It is a circle that I already belong to");
 						return;
 					}
 
@@ -2495,7 +2509,7 @@ public class ArenaWindow implements IAppWindow {
 			} else {
 				lobbyCircleTabFolder.setSelection(0);
 
-				ErrorLog log = new ErrorLog("サークル名規則に従っていません");
+				ErrorLog log = new ErrorLog("Does not follow the circle name rules");
 				lobbyTab.chatLogViewer.appendMessage(log);
 			}
 			break;
@@ -2585,7 +2599,7 @@ public class ArenaWindow implements IAppWindow {
 				return true;
 			}
 			default:
-				InfoLog log = new InfoLog("サーバーにログインしていません");
+				InfoLog log = new InfoLog("You are not logged in to the server");
 				lobbyTab.chatLogViewer.appendMessage(log);
 			}
 		}
@@ -2593,7 +2607,7 @@ public class ArenaWindow implements IAppWindow {
 	}
 
 	public void openPrivateMessageDialog(LobbyUser user) {
-		TextDialog dialog = new TextDialog(shell, "プライベートメッセージの送信", user.getName() + " にメッセージを送信します", "送信", 250);
+		TextDialog dialog = new TextDialog(shell, "Send private message", user.getName() + " Send a message to", "send", 250);
 		switch (dialog.open()) {
 		case IDialogConstants.OK_ID:
 			String message = dialog.getUserInput();
@@ -2726,7 +2740,7 @@ public class ArenaWindow implements IAppWindow {
 
 		@Override
 		public void errorProtocolNumber(String number) {
-			String error = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number, IProtocol.NUMBER);
+			String error = String.format("Cannot connect because the protocol number does not match the server Server:%s client:%s", number, IProtocol.NUMBER);
 			ErrorLog log = new ErrorLog(error);
 			lobbyTab.chatLogViewer.appendMessage(log);
 		}
@@ -2748,21 +2762,21 @@ public class ArenaWindow implements IAppWindow {
 				lobbySession = LobbySessionState.OFFLINE;
 				lobbyUserState = LobbyUserState.OFFLINE;
 
-				lobbyServerLoginButton.setText("ロビーログイン");
+				lobbyServerLoginButton.setText("Lobby login");
 				setLobbyLoginUserName("");
 				resetLobbyControllers();
 
 				lobbyUserStateCombo.setEnabled(false);
 				lobbyUserStateCombo.deselect(0);
-				lobbyServerAddressLabel.setText("サーバー: ");
-				lobbyUserCountLabel.setText("ユーザー数: ");
+				lobbyServerAddressLabel.setText("server: ");
+				lobbyUserCountLabel.setText("Number of users: ");
 				lobbyServerAddressLabel.getParent().layout();
 
 				allLobbyUsers.clear();
 				lobbyTab.userListTableViewer.refresh();
 				pmTab.userListTableViewer.refresh();
 
-				ServerLog log = new ServerLog("ロビーサーバーからログアウトしました");
+				ServerLog log = new ServerLog("You logged out of the lobby server");
 				lobbyTab.infoLogViewer.appendMessage(log);
 
 				for (Map<String, LobbyUser> members : circleMap.values()) {
@@ -2959,7 +2973,7 @@ public class ArenaWindow implements IAppWindow {
 					}
 
 					if (!isActiveWindow)
-						application.balloonNotify(shell, "[サーバー告知] " + message);
+						application.balloonNotify(shell, "[Server announcement] " + message);
 				} catch (SWTException e) {
 				}
 			}
@@ -3076,7 +3090,7 @@ public class ArenaWindow implements IAppWindow {
 		lobbyHandlers.put(ProtocolConstants.Lobby.ERROR_LOGIN_USER_BEYOND_CAPACITY, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				ErrorLog log = new ErrorLog("ロビーが満室なので入れません");
+				ErrorLog log = new ErrorLog("The lobby is full so you can't enter");
 				lobbyTab.chatLogViewer.appendMessage(log);
 				return false;
 			}
@@ -3084,7 +3098,7 @@ public class ArenaWindow implements IAppWindow {
 		lobbyHandlers.put(ProtocolConstants.Lobby.ERROR_LOGIN_USER_DUPLICATED_NAME, new IProtocolMessageHandler() {
 			@Override
 			public boolean process(IProtocolDriver driver, String argument) {
-				ErrorLog log = new ErrorLog("同名のユーザーが既にログインしているのでログインできません");
+				ErrorLog log = new ErrorLog("I can't log in because a user with the same name is already logged in");
 				lobbyTab.chatLogViewer.appendMessage(log);
 				return false;
 			}

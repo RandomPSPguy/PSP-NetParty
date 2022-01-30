@@ -49,7 +49,7 @@ public class ConnectAddressDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("アドレスを入力してください");
+		newShell.setText("Please enter the address");
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class ConnectAddressDialog extends Dialog {
 
 		{
 			Label label = new Label(composite, SWT.NONE);
-			label.setText("接続先のアドレス:");
+			label.setText("Destination address:");
 			label.setLayoutData(new GridData(SWT.DEFAULT, SWT.DEFAULT, false, false, 4, 1));
 		}
 		{

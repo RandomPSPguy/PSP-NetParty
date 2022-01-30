@@ -27,7 +27,7 @@ public class UserProfilePage extends PreferencePage {
 	private Text profile;
 
 	public UserProfilePage(IniUserProfile profile) {
-		super("ユーザープロフィール");
+		super("User profile");
 		userProfile = profile;
 
 		noDefaultAndApplyButton();
@@ -51,7 +51,7 @@ public class UserProfilePage extends PreferencePage {
 		configContainer.setLayout(gridLayout);
 
 		Label configUserNameLabel = new Label(configContainer, SWT.NONE);
-		configUserNameLabel.setText("ユーザー名");
+		configUserNameLabel.setText("username");
 		configUserNameLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		userNameText = new Text(configContainer, SWT.SINGLE | SWT.BORDER);
@@ -71,12 +71,12 @@ public class UserProfilePage extends PreferencePage {
 		new Label(configContainer, SWT.NONE);
 
 		Label urlHint = new Label(configContainer, SWT.NONE);
-		urlHint.setText("自分のブログ・HP・SNSのアカウント等のURLを入力して下さい");
+		urlHint.setText("Please enter the URL of your blog, HP, SNS account, etc.");
 		gridDataHint = new GridData(SWT.BEGINNING, SWT.CENTER, false, false);
 		urlHint.setData(gridDataHint);
 
 		Label iconUrlLabel = new Label(configContainer, SWT.NONE);
-		iconUrlLabel.setText("アイコンURL");
+		iconUrlLabel.setText("Icon URL");
 		gridDataLabel = new GridData(SWT.END, SWT.CENTER, false, false);
 		gridDataLabel.verticalIndent = 6;
 		iconUrlLabel.setLayoutData(gridDataLabel);
@@ -88,12 +88,12 @@ public class UserProfilePage extends PreferencePage {
 		new Label(configContainer, SWT.NONE);
 
 		Label iconUrlHint = new Label(configContainer, SWT.NONE);
-		iconUrlHint.setText("Web上の画像(GIF,JPEG,PNG,BMP,ICO,TIFF)のURLを入力して下さい");
+		iconUrlHint.setText("Enter the URL of the image (GIF, JPEG, PNG, BMP, ICO, TIFF) on the web");
 		gridDataHint = new GridData(SWT.BEGINNING, SWT.CENTER, false, false);
 		iconUrlHint.setData(gridDataHint);
 
 		Label profileLabel = new Label(configContainer, SWT.NONE);
-		profileLabel.setText("プロフィール");
+		profileLabel.setText("profile");
 		gridDataLabel = new GridData(SWT.RIGHT, SWT.TOP, false, false);
 		gridDataLabel.verticalIndent = 9;
 		profileLabel.setLayoutData(gridDataLabel);
@@ -129,7 +129,7 @@ public class UserProfilePage extends PreferencePage {
 			setErrorMessage(null);
 		} else {
 			setValid(false);
-			setErrorMessage("ユーザー名が不正な値です");
+			setErrorMessage("Username is an invalid value");
 		}
 	}
 

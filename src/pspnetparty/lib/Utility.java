@@ -219,7 +219,7 @@ public class Utility {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append(transport);
-		sb.append(" KeepAlive切断: ");
+		sb.append(" KeepAlive cut off: ");
 
 		date.setTime(deadline);
 		sb.append("Deadline[");

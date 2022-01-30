@@ -200,14 +200,14 @@ public class PlayClient {
 		ArrayList<String> pendingLogs = new ArrayList<String>();
 
 		if (JnetPcapWlanDevice.LIBRARY.isReady()) {
-			pendingLogs.add("PcapインストールOK");
+			pendingLogs.add("Pcap installation OK");
 		} else {
-			pendingLogs.add("Pcapがインストールされていません");
+			pendingLogs.add("Pcap is not installed");
 		}
 		if (NativeWlanDevice.LIBRARY.isReady()) {
-			pendingLogs.add("Windowsワイヤレスネットワーク機能OK");
+			pendingLogs.add("Windows wireless network function OK");
 		} else {
-			pendingLogs.add("Windowsワイヤレスネットワーク機能がインストールされていません");
+			pendingLogs.add("Windows wireless network function is not installed");
 		}
 
 		wlanLibrary = iniSettings.getWlanLibrary();
@@ -300,7 +300,7 @@ public class PlayClient {
 				final Menu menu = new Menu(arenaWindow.getShell());
 
 				MenuItem itemArena = new MenuItem(menu, SWT.PUSH);
-				itemArena.setText("アリーナ");
+				itemArena.setText("Arena");
 				itemArena.addListener(SWT.Selection, new Listener() {
 					@Override
 					public void handleEvent(Event event) {
@@ -309,7 +309,7 @@ public class PlayClient {
 				});
 
 				MenuItem itemRoom = new MenuItem(menu, SWT.PUSH);
-				itemRoom.setText("ルーム");
+				itemRoom.setText("Room");
 				itemRoom.addListener(SWT.Selection, new Listener() {
 					@Override
 					public void handleEvent(Event event) {
@@ -318,7 +318,7 @@ public class PlayClient {
 				});
 
 				MenuItem itemShutdown = new MenuItem(menu, SWT.PUSH);
-				itemShutdown.setText("アプリを終了");
+				itemShutdown.setText("Exit the app");
 				itemShutdown.addListener(SWT.Selection, new Listener() {
 					@Override
 					public void handleEvent(Event event) {
@@ -344,9 +344,9 @@ public class PlayClient {
 		}
 		portalServerList = serverRegistry.getPortalRotator();
 
-		String software = String.format("%s プレイクライアント バージョン: %s", AppConstants.APP_NAME, AppConstants.VERSION);
+		String software = String.format("%s Play client version: %s", AppConstants.APP_NAME, AppConstants.VERSION);
 		arenaWindow.appendToSystemLog(software, false);
-		arenaWindow.appendToSystemLog("プロトコル: " + IProtocol.NUMBER, false);
+		arenaWindow.appendToSystemLog("protocol: " + IProtocol.NUMBER, false);
 
 		for (String log : pendingLogs) {
 			arenaWindow.appendToSystemLog(log, false);
@@ -409,13 +409,13 @@ public class PlayClient {
 		});
 
 		if (Utility.isEmpty(iniUserProfile.getUserName())) {
-			TextDialog dialog = new TextDialog(null, AppConstants.APP_NAME + " - ユーザー名が設定されていません", "ユーザー名を入力してください", null, 300, SWT.NONE);
+			TextDialog dialog = new TextDialog(null, AppConstants.APP_NAME + " - Username is not set", "Please enter your username", null, 300, SWT.NONE);
 			switch (dialog.open()) {
 			case IDialogConstants.OK_ID:
 				iniUserProfile.setUserName(dialog.getUserInput());
 				break;
 			default:
-				iniUserProfile.setUserName("未設定");
+				iniUserProfile.setUserName("Not set");
 			}
 		}
 
@@ -427,7 +427,7 @@ public class PlayClient {
 	}
 
 	private boolean openShutdownConfirmDialog(Shell shell) {
-		ConfirmDialog dialog = new ConfirmDialog(shell, "PSP NetPartyを終了します", "PSP NetPartyを終了します。よろしいですか？");
+		ConfirmDialog dialog = new ConfirmDialog(shell, "Exit PSP Net Party", "Exit PSP Net Party. Is it OK?");
 		switch (dialog.open()) {
 		case IDialogConstants.CANCEL_ID:
 			return false;
@@ -465,8 +465,8 @@ public class PlayClient {
 		IAppWindow.Type type = window.getType();
 		if (type != IAppWindow.Type.ARENA) {
 			ToolItem arenaWindowItem = new ToolItem(toolBar, SWT.PUSH);
-			arenaWindowItem.setText("アリーナ");
-			arenaWindowItem.setToolTipText("部屋の検索やロビーのチャット");
+			arenaWindowItem.setText("Arena");
+			arenaWindowItem.setToolTipText("Room search and lobby chat");
 			arenaWindowItem.setImage(imageRegistry.get(ICON_TOOLBAR_ARENA));
 			arenaWindowItem.addListener(SWT.Selection, new Listener() {
 				@Override
@@ -477,8 +477,8 @@ public class PlayClient {
 		}
 		if (type != IAppWindow.Type.ROOM) {
 			ToolItem roomWindowItem = new ToolItem(toolBar, SWT.PUSH);
-			roomWindowItem.setText("ルーム");
-			roomWindowItem.setToolTipText("ルーム内で通信プレイができます");
+			roomWindowItem.setText("Room");
+			roomWindowItem.setToolTipText("Communication play is possible in the room");
 			roomWindowItem.setImage(imageRegistry.get(ICON_TOOLBAR_ROOM));
 			roomWindowItem.addListener(SWT.Selection, new Listener() {
 				@Override
@@ -489,8 +489,8 @@ public class PlayClient {
 		}
 
 		ToolItem configWindowItem = new ToolItem(toolBar, SWT.PUSH);
-		configWindowItem.setText("設定");
-		configWindowItem.setToolTipText("アプリケーションの設定をします");
+		configWindowItem.setText("Configuration");
+		configWindowItem.setToolTipText("Set up the application");
 		configWindowItem.setImage(imageRegistry.get(ICON_TOOLBAR_CONFIG));
 		configWindowItem.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -506,7 +506,7 @@ public class PlayClient {
 
 		ToolItem wikiItem = new ToolItem(toolBar, SWT.PUSH);
 		wikiItem.setText("Wiki");
-		wikiItem.setToolTipText(AppConstants.APP_NAME + "のWikiページを表示します");
+		wikiItem.setToolTipText(AppConstants.APP_NAME + "Wiki page");
 		wikiItem.setImage(imageRegistry.get(ICON_TOOLBAR_WIKI));
 		wikiItem.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -516,8 +516,8 @@ public class PlayClient {
 		});
 
 		ToolItem exitItem = new ToolItem(toolBar, SWT.PUSH);
-		exitItem.setText("終了");
-		exitItem.setToolTipText(AppConstants.APP_NAME + "を終了します");
+		exitItem.setText("end");
+		exitItem.setToolTipText(AppConstants.APP_NAME + "To finish");
 		exitItem.setImage(imageRegistry.get(ICON_TOOLBAR_EXIT));
 		exitItem.addListener(SWT.Selection, new Listener() {
 			@Override
@@ -539,7 +539,7 @@ public class PlayClient {
 		appVersionContainer.setLayout(rowLayout);
 
 		Label statusApplicationVersionLabel = new Label(appVersionContainer, SWT.NONE);
-		statusApplicationVersionLabel.setText("バージョン:");
+		statusApplicationVersionLabel.setText("version:");
 		initControl(statusApplicationVersionLabel);
 
 		Label statusApplicationVersionNumber = new Label(appVersionContainer, SWT.NONE);
@@ -548,7 +548,7 @@ public class PlayClient {
 		initControl(statusApplicationVersionNumber);
 
 		Label statusApplicationProtocolLabel = new Label(appVersionContainer, SWT.NONE);
-		statusApplicationProtocolLabel.setText("プロトコル:");
+		statusApplicationProtocolLabel.setText("protocol:");
 		initControl(statusApplicationProtocolLabel);
 
 		Label statusApplicationProtocolNumber = new Label(appVersionContainer, SWT.NONE);
@@ -557,7 +557,7 @@ public class PlayClient {
 		initControl(statusApplicationProtocolNumber);
 
 		Label statusApplicationSsidLabel = new Label(appVersionContainer, SWT.NONE);
-		statusApplicationSsidLabel.setText("SSID機能:");
+		statusApplicationSsidLabel.setText("SSID function:");
 		initControl(statusApplicationSsidLabel);
 
 		Label statusApplicationSsidLibrary = new Label(appVersionContainer, SWT.NONE);
@@ -570,14 +570,14 @@ public class PlayClient {
 	private void updateWlanLibraryStatus() {
 		if (!wlanLibrary.isReady()) {
 			for (Label ssidStatus : toolbarSsidLibraryLabels) {
-				ssidStatus.setText("エラー");
+				ssidStatus.setText("error");
 				ssidStatus.setForeground(colorRegistry.get(COLOR_NG));
 
 				ssidStatus.getParent().getParent().layout();
 			}
 		} else if (wlanLibrary instanceof WlanProxyLibrary) {
 			for (Label ssidStatus : toolbarSsidLibraryLabels) {
-				ssidStatus.setText("プロキシ");
+				ssidStatus.setText("Proxy");
 				ssidStatus.setForeground(colorRegistry.get(COLOR_NG));
 
 				ssidStatus.getParent().getParent().layout();
@@ -698,7 +698,7 @@ public class PlayClient {
 			@Override
 			protected void configureShell(Shell newShell) {
 				super.configureShell(newShell);
-				newShell.setText("設定");
+				newShell.setText("Configuration");
 				newShell.setImage(imageRegistry.get(ICON_TOOLBAR_CONFIG));
 			}
 
@@ -965,13 +965,13 @@ public class PlayClient {
 
 	public void connectTcp(InetSocketAddress address, IProtocol protocol) throws IOException {
 		if (address == null)
-			throw new IOException("アドレスエラー");
+			throw new IOException("Address error");
 		tcpClient.connect(address, ProtocolConstants.TIMEOUT, protocol);
 	}
 
 	public void connectUdp(InetSocketAddress address, IProtocol protocol) throws IOException {
 		if (address == null)
-			throw new IOException("アドレスエラー");
+			throw new IOException("Address error");
 		udpClient.connect(address, ProtocolConstants.TIMEOUT, protocol);
 	}
 
@@ -997,7 +997,7 @@ public class PlayClient {
 			server = portalServerList.next();
 
 		if (Utility.isEmpty(server)) {
-			query.failCallback(new ErrorLog("ポータルサーバーが設定されていません"));
+			query.failCallback(new ErrorLog("Portal server is not set"));
 			return;
 		}
 
@@ -1027,7 +1027,7 @@ public class PlayClient {
 
 								@Override
 								public void errorProtocolNumber(String number) {
-									String error = String.format("サーバーとのプロトコルナンバーが一致しないので接続できません サーバー:%s クライアント:%s", number,
+									String error = String.format("Cannot connect because the protocol number does not match the server Server:%s client:%s", number,
 											IProtocol.NUMBER);
 									arenaWindow.appendToSystemLog(error, true);
 								}
@@ -1048,7 +1048,7 @@ public class PlayClient {
 									if (message != null)
 										query.successCallback(message);
 									else
-										query.failCallback(new ErrorLog("利用可能なサーバーが見つかりません"));
+										query.failCallback(new ErrorLog("No available server found"));
 								}
 							};
 						}

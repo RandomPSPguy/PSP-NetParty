@@ -95,7 +95,7 @@ public class WlanProxyApp {
 		iniFile = new IniFile(INI_SETTING_FILE_NAME);
 
 		shell = new Shell(SwtUtils.DISPLAY);
-		shell.setText("PSP NetParty WLANアダプタプロキシ");
+		shell.setText("PSP NetParty WLAN Adapter proxy");
 
 		GridLayout gridLayout;
 
@@ -106,7 +106,7 @@ public class WlanProxyApp {
 		shell.setLayout(gridLayout);
 
 		Label portLabel = new Label(shell, SWT.NONE);
-		portLabel.setText("ポート");
+		portLabel.setText("port");
 		portLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		portSpinner = new Spinner(shell, SWT.BORDER);
@@ -115,41 +115,41 @@ public class WlanProxyApp {
 		portSpinner.setSelection(20000);
 
 		Label adapterLabel = new Label(shell, SWT.NONE);
-		adapterLabel.setText("アダプタ");
+		adapterLabel.setText("adapter");
 		adapterLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false));
 
 		adapterCombo = new Combo(shell, SWT.BORDER | SWT.READ_ONLY);
 		adapterCombo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 
 		serverStart = new Button(shell, SWT.TOGGLE);
-		serverStart.setText("開始");
+		serverStart.setText("Start");
 
 		logText = new Text(shell, SWT.READ_ONLY | SWT.BORDER | SWT.MULTI | SWT.V_SCROLL);
 		logText.setBackground(SwtUtils.DISPLAY.getSystemColor(SWT.COLOR_WHITE));
 		logText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 5, 1));
 
 		statusbarLabel = new Label(shell, SWT.NONE);
-		statusbarLabel.setText("通信はありません");
+		statusbarLabel.setText("No communication");
 		statusbarLabel.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 5, 1));
 
-		String software = String.format("%s 通信サーバー バージョン: %s", AppConstants.APP_NAME, AppConstants.VERSION);
+		String software = String.format("%s Communication server version: %s", AppConstants.APP_NAME, AppConstants.VERSION);
 		appendLog(software, false);
 		appendLog("プロトコル: " + IProtocol.NUMBER, false);
 
 		if (!JnetPcapWlanDevice.LIBRARY.isReady()) {
-			appendLog("Pcapがインストールされていません", false);
+			appendLog("Pcap is not installed", false);
 		} else if (!NativeWlanDevice.LIBRARY.isReady()) {
-			appendLog("PcapインストールOK", false);
-			appendLog("Windowsワイヤレスネットワーク機能がインストールされていません", false);
+			appendLog("Pcap installation OK", false);
+			appendLog("Windows wireless network function is not installed", false);
 
 			wlanLibrary = JnetPcapWlanDevice.LIBRARY;
-			appendLog("SSID機能: Off (jNetPcap)", false);
+			appendLog("SSID function: Off (jNetPcap)", false);
 		} else {
-			appendLog("PcapインストールOK", false);
-			appendLog("Windowsワイヤレスネットワーク機能OK", false);
+			appendLog("Pcap installation OK", false);
+			appendLog("Windows wireless network function OK", false);
 
 			wlanLibrary = NativeWlanDevice.LIBRARY;
-			appendLog("SSID機能: On (PnpWlan)", false);
+			appendLog("SSID function: On (PnpWlan)", false);
 		}
 
 		if (wlanLibrary.isReady()) {
@@ -184,7 +184,7 @@ public class WlanProxyApp {
 					} else {
 						serverStart.setEnabled(false);
 						isPacketCapturing = false;
-						statusbarLabel.setText("通信はありません");
+						statusbarLabel.setText("No communication");
 					}
 				}
 			});
@@ -219,7 +219,7 @@ public class WlanProxyApp {
 			initCaptureBuffer();
 		} else {
 			adapterCombo.removeAll();
-			adapterCombo.add("使用できません");
+			adapterCombo.add("It can not be used");
 			adapterCombo.select(0);
 			adapterCombo.setEnabled(false);
 
@@ -268,7 +268,7 @@ public class WlanProxyApp {
 
 	private void refreshAdapterList() {
 		adapterCombo.removeAll();
-		adapterCombo.add("選択されていません");
+		adapterCombo.add("Not selected");
 
 		wlanAdapterList.clear();
 
@@ -314,7 +314,7 @@ public class WlanProxyApp {
 			sb.append('-');
 
 		adapterCombo.add(sb.toString());
-		adapterCombo.add("アダプターリストを再読み込み");
+		adapterCombo.add("Reload the adapter list");
 
 		adapterCombo.select(0);
 
@@ -468,7 +468,7 @@ public class WlanProxyApp {
 				Runnable refreshAction = new Runnable() {
 					@Override
 					public void run() {
-						statusbarLabel.setText("PSPからの受信: " + capturedBytes + " バイト  |  他参加者からの受信: " + sentBytes + " バイト");
+						statusbarLabel.setText("Receive from PSP: " + capturedBytes + "Part-Time Job  |  Received from other participants: " + sentBytes + "Part-Time Job");
 						capturedBytes = sentBytes = 0;
 					}
 				};
@@ -543,7 +543,7 @@ public class WlanProxyApp {
 			if (proxyClient != ISocketConnection.NULL)
 				return null;
 
-			appendLog("接続されました: " + connection.getRemoteAddress(), true);
+			appendLog("Connected: " + connection.getRemoteAddress(), true);
 
 			featureBuffer.clear();
 			// System.out.println(featureBuffer);
@@ -617,7 +617,7 @@ public class WlanProxyApp {
 		public void connectionDisconnected() {
 			proxyClient = ISocketConnection.NULL;
 
-			appendLog("切断されました: " + connection.getRemoteAddress(), true);
+			appendLog("Disconnected: " + connection.getRemoteAddress(), true);
 		}
 
 		@Override

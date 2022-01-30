@@ -49,7 +49,7 @@ public class MultiLineChatDialog extends Dialog {
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
-		newShell.setText("複数行のチャット送信");
+		newShell.setText("Send multi-line chat");
 		newShell.setImeInputMode(getParentShell().getImeInputMode());
 	}
 
@@ -94,7 +94,7 @@ public class MultiLineChatDialog extends Dialog {
 
 		Button button = getButton(OK);
 		button.setEnabled(inputText.getCharCount() > 0);
-		button.setText("送信");
+		button.setText("send");
 
 		return control;
 	}

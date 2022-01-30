@@ -508,7 +508,7 @@ public class LobbyEngine {
 
 			LobbyStatusProtocolDriver driver = new LobbyStatusProtocolDriver(connection);
 
-			logger.log("ポータルから接続されました: " + driver.address);
+			logger.log("Connected from the portal: " + driver.address);
 
 			portalConnections.put(driver, this);
 			return driver;
@@ -527,7 +527,7 @@ public class LobbyEngine {
 		@Override
 		public void connectionDisconnected() {
 			portalConnections.remove(this);
-			logger.log("ポータルから切断されました: " + address);
+			logger.log("Disconnected from the portal: " + address);
 		}
 
 		@Override

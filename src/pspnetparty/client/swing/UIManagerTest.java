@@ -36,7 +36,8 @@ public class UIManagerTest extends JFrame implements ActionListener {
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(10, 10, 450, 300);
-		frame.setTitle("タイトル");
+		frame.setTitle("\r\n"
+				+ "title");
 		frame.setVisible(true);
 	}
 
