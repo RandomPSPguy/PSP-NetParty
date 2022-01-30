@@ -1,28 +1,30 @@
-# PSP NetPartyについて
+#About PSP Net Party
 
-PSP NetParty (ネトパ・PNP) は、XLink KaiやMHP Tunnelのように\
-インターネットを経由したPSPの通信プレイを可能にするトンネリングソフトです。\
-部屋やチャットなどにはTCP、PSPのトンネル通信にはTCPかUDPを選択して使用します。
+PSP NetParty (PNP) is like XLink Kai and adhocparty (ps3).
+Adhoc Tunneling software that enables PSP communication play via the Internet. \ \
 
-**クライアント側のポート開放は基本的に必要ありません。**
+As of now, it is usable but with some minor issues such as not being able to follow ssid's on linux.
+There are also some translating mistakes where eclipse automatically made a new line when I pasted the english text, which messed up the ui. Will fix if there's any interest.
 
-- このソフトウェアはフリーソフト(GPL)です。
-- 開発者・テスターによる十分なテストをした上での配布となっておりますが、\
-  このソフトウェアを利用した事によるいかなる損害も作者は一切の責任を負いません。\
-  自己の責任の上で使用して下さい。
-- 配布、転載などは自由に行なってかまいません。
+There is no server being hosted for this program yet, that will change if this project gets any traction. Pageboy.org is only for testing for now.
 
-## 公式サイト Official Site
+** It is not necessary to open the port on the client side. ** **
+
+--This software is free software (GPL).
+――It is distributed after sufficient testing by developers and testers, but \
+  The author does not take any responsibility for any damage caused by using this software. \ \
+  Please use at your own risk.
+――You are free to distribute and reprint.
+
+## Official Site
 https://github.com/montehunter/PSP-NetParty/wiki
 
 
-## ビルド方法
+## How to build
 
-SWTとjNetPcapについては、それぞれのOS用のものをDLしてください\
-jNetPcapはプロジェクトルートに、SWTはlib_swtへ配置してください
+tested on eclipse 3.6.2
 
-Eclipseで開発する場合は、ダウンロードしたSWTのZipをプロジェクトとしてインポートするか\
-lib_swtにあるswt.jarへクラスパスを設定しなおしてください
+Download the latest CompileTools.zip and merge with the github repository.
 
-antのビルドでは、build.propertiesを各自用意して、\
-publish_directoryをPSP NetPartyのjarを書き出すディレクトリに指定してください
+For ant build, prepare build.properties by yourself and \
+Specify publish_directory as the directory to export the PSP NetParty jar
