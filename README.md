@@ -27,6 +27,11 @@ There is no server being hosted for this program yet, that will change if this p
 ## Official Site
 https://github.com/montehunter/PSP-NetParty/wiki
 
+## How to play
+
+Install winpcap and then launch PlayClient.jar
+Again, currently there is no master server, so you must host yourself.
+
 
 ## How to build
 
