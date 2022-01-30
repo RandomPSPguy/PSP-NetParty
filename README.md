@@ -3,6 +3,9 @@
 PSP NetParty (PNP) is like XLink Kai and adhocparty (ps3).
 Adhoc Tunneling software that enables PSP communication play via the Internet. 
 
+![pspnetparty](https://user-images.githubusercontent.com/98584614/151692080-67e2408b-8970-4977-984f-6666bbda1f34.png)
+
+
 As of now, it is usable but with some minor issues such as not being able to follow ssid's on linux.
 There are also some translating mistakes where eclipse automatically made a new line when I pasted the english text, which messed up the ui. Will fix if there's any interest.
 
